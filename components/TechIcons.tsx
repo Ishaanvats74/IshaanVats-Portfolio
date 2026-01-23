@@ -1,4 +1,5 @@
-const TechPill = ({ icon, label }) => {
+const TechIcons = ({ icon, label }:{icon:React.ReactNode, label:string }) => {
+  console.log(icon)
   return (
     <div
       className="
@@ -7,7 +8,9 @@ const TechPill = ({ icon, label }) => {
         rounded-xl
         bg-slate-800/70
         hover:bg-slate-700
+        hover:text-sky-400
         transition-all
+        hover:cursor-pointer
       "
     >
       <div className="h-5 w-5 flex items-center justify-center text-sky-400">
@@ -19,4 +22,4 @@ const TechPill = ({ icon, label }) => {
 };
 
 
-export default TechPill;
+export default TechIcons;
