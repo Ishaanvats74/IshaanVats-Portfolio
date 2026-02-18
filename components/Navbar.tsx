@@ -29,7 +29,7 @@ const Navbar = () => {
         <div
           onClick={() => router.push("/")}
           className="cursor-pointer text-xl font-semibold 
-          bg-gradient-to-r from-sky-400 to-blue-600 
+          bg-linear-to-r from-sky-400 to-blue-600 
           bg-clip-text text-transparent">
           Ishaan.dev
         </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
 
                 {/* Animated underline */}
                 <span
-                  className={`absolute left-0 -bottom-1 h-[2px] w-full 
+                  className={`absolute left-0 -bottom-1 h-0.5 w-full 
                   bg-sky-400 transition-transform duration-300
                   ${isActive ? "scale-x-100" : "scale-x-0"}
                   origin-left`}

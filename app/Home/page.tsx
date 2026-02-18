@@ -24,58 +24,22 @@ import {
 import StackIcon from "tech-stack-icons";
 import { Typewriter } from "react-simple-typewriter";
 import { useRouter } from "next/navigation";
-
-const projects = [
-  {
-    title: "AI Resume Reviewer",
-    description: "ATS-based resume analyzer using LLMs and job descriptions.",
-    image: "/projects/resume.jpg",
-    link: "/projects/resume-reviewer",
-  },
-  {
-    title: "Real-Time Chat App",
-    description: "Next.js + Socket.IO + Neon powered chat platform.",
-    image: "/projects/chat.jpg",
-    link: "/projects/chat-app",
-  },
-  {
-    title: "University Learning Dashboard",
-    description: "AI Interview coach + coding practice + analytics.",
-    image: "/projects/dashboard.jpg",
-    link: "/projects/dashboard",
-  },
-  {
-    title: "E-Commerce Platform",
-    description: "Full-stack shopping platform with Supabase backend.",
-    image: "/projects/ecommerce.jpg",
-    link: "/projects/ecommerce",
-  },
-];
-
-const certificateLogos = [
-  { src: "/certificates/ml.jpg", alt: "Machine Learning Certificate" },
-  { src: "/certificates/fullstack.jpg", alt: "Full Stack Certificate" },
-  { src: "/certificates/genai.jpg", alt: "Generative AI Certificate" },
-  { src: "/certificates/cloud.jpg", alt: "Cloud Certificate" },
-  { src: "/certificates/python.jpg", alt: "Python Certificate" },
-];
+import { certificateLogos, featuredProjects } from "@/lib/constanst";
 
 const Page = () => {
   const { scrollYProgress } = useScroll();
   const router = useRouter();
 
   return (
-    <div className="relative min-h-screen text-white bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <div className="relative min-h-screen text-white bg-linear-to-br` from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       {/* ================= Background Glow ================= */}
-      <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
-
-      <Navbar />
+      <div className="absolute -top-50 -left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
 
       {/* ================= Scroll Progress ================= */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 shadow-lg shadow-sky-500/40 origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-linear-to-r from-sky-400 via-blue-500 to-indigo-600 shadow-lg shadow-sky-500/40 origin-left z-50"
       />
 
       <div className="pt-32">
@@ -89,7 +53,7 @@ const Page = () => {
           >
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
               Hi, I&apos;m{" "}
-              <span className="bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
                 Ishaan Vats
               </span>
             </h1>
@@ -124,14 +88,14 @@ const Page = () => {
             <div className="mt-10 flex gap-6">
               <button
                 onClick={() => router.push("/projects")}
-                className="px-6 py-3 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-500/30"
+                className="cursor-pointer px-6 py-3 rounded-lg bg-linear-to-r from-sky-500 to-blue-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-500/30"
               >
                 View Projects
               </button>
 
               <button
                 onClick={() => router.push("/contact")}
-                className="px-6 py-3 rounded-lg border border-sky-500/30 hover:bg-sky-500/10 transition-all duration-300"
+                className="cursor-pointer px-6 py-3 rounded-lg border border-sky-500/30 hover:bg-sky-500/10 transition-all duration-300"
               >
                 Contact Me
               </button>
@@ -150,7 +114,7 @@ const Page = () => {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity }}
-              className="w-[380px]"
+              className="w-95"
             >
               <ProfileCard
                 name="Ishaan Vats"
@@ -166,7 +130,7 @@ const Page = () => {
                 enableMobileTilt
                 onContactClick={() => router.push("/contact")}
                 behindGlowColor="rgba(56, 189, 248, 0.7)"
-                behindGlowSize={650}
+                behindGlowSize={"650"}
                 behindGlowEnabled
                 innerGradient="linear-gradient(145deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.02) 100%)"
               />
@@ -175,83 +139,66 @@ const Page = () => {
         </section>
 
         {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-sky-500/40 to-transparent my-16" />
+        <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
+
         {/* ================= PROJECTS ================= */}
-<section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
+        <section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
+          <h2
+            className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            Projects
+          </h2>
 
-  <h2 className="text-3xl font-semibold mb-12 
-  bg-gradient-to-r from-sky-400 to-blue-600 
-  bg-clip-text text-transparent">
-    Projects
-  </h2>
+          <div className="relative w-full ">
+            <motion.div
+              className="flex gap-8"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                duration: 25,
+                ease: "linear",
+              }}
+            >
+              {[...featuredProjects, ...featuredProjects].map((project, index) => (
+                <div
+                  key={index}
+                  onClick={() => router.push(project.link)}
+                  className="min-w-85 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer">
+                  <div className="h-50 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                    />
+                  </div>
 
-  <div className="relative w-full overflow-hidden">
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white">
+                      {project.title}
+                    </h3>
+                    <p className="text-slate-400 mt-3 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
 
-    <motion.div
-      className="flex gap-8"
-      animate={{ x: ["0%", "-50%"] }}
-      transition={{
-        repeat: Infinity,
-        duration: 25,
-        ease: "linear",
-      }}
-    >
-      {[...projects, ...projects].map((project, index) => (
-        <div
-          key={index}
-          onClick={() => router.push(project.link)}
-          className="min-w-[340px] bg-slate-900/60 
-          backdrop-blur-xl border border-slate-800 
-          rounded-2xl overflow-hidden 
-          hover:border-sky-500/40 
-          hover:scale-[1.05] 
-          transition-all duration-300 cursor-pointer"
-        >
-          <div className="h-[200px] overflow-hidden">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover hover:scale-110 transition duration-500"
-            />
+                    <div className="mt-4 text-sky-400 text-sm font-medium">
+                      View Project →
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
-
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-white">
-              {project.title}
-            </h3>
-            <p className="text-slate-400 mt-3 text-sm leading-relaxed">
-              {project.description}
-            </p>
-
-            <div className="mt-4 text-sky-400 text-sm font-medium">
-              View Project →
-            </div>
-          </div>
-        </div>
-      ))}
-    </motion.div>
-
-  </div>
-</section>
-
-{/* Divider */}
-<div className="h-px w-full bg-gradient-to-r 
-from-transparent via-sky-500/40 to-transparent my-16" />
-
+        </section>
 
         {/* Divider */}
-        <div
-          className="h-px w-full bg-gradient-to-r 
-from-transparent via-sky-500/40 to-transparent my-16"
-        />
+        <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
 
         {/* ================= CERTIFICATIONS ================= */}
         <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
-          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
             Certifications
           </h2>
 
-          <div className="relative h-[220px] overflow-hidden rounded-2xl">
+          <div className="relative h-55 overflow-hidden rounded-2xl">
             <LogoLoop
               logos={certificateLogos}
               speed={70}
@@ -268,11 +215,11 @@ from-transparent via-sky-500/40 to-transparent my-16"
         </section>
 
         {/* Divider */}
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-sky-500/40 to-transparent my-16" />
+        <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
 
         {/* ================= TECH STACK ================= */}
         <section className="max-w-7xl mx-auto px-6 md:px-10 py-16">
-          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
             Tech Stack
           </h2>
 
