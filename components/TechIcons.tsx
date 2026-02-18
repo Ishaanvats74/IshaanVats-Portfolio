@@ -1,5 +1,4 @@
 const TechIcons = ({ icon, label }:{icon:React.ReactNode, label:string }) => {
-  console.log(icon)
   return (
     <div
       className="

@@ -1,7 +1,10 @@
 "use client";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import TechIcons from "@/components/TechIcons";
+import LogoLoop from "@/components/LogoLoop";
+import ProfileCard from "@/components/ProfileCard";
 import { motion, useScroll } from "motion/react";
 import {
   CPlusPlus,
@@ -19,178 +22,367 @@ import {
   TypeScript,
 } from "developer-icons";
 import StackIcon from "tech-stack-icons";
-// import Card from "../../components/Card";
 import { Typewriter } from "react-simple-typewriter";
+import { useRouter } from "next/navigation";
+
+const projects = [
+  {
+    title: "AI Resume Reviewer",
+    description: "ATS-based resume analyzer using LLMs and job descriptions.",
+    image: "/projects/resume.jpg",
+    link: "/projects/resume-reviewer",
+  },
+  {
+    title: "Real-Time Chat App",
+    description: "Next.js + Socket.IO + Neon powered chat platform.",
+    image: "/projects/chat.jpg",
+    link: "/projects/chat-app",
+  },
+  {
+    title: "University Learning Dashboard",
+    description: "AI Interview coach + coding practice + analytics.",
+    image: "/projects/dashboard.jpg",
+    link: "/projects/dashboard",
+  },
+  {
+    title: "E-Commerce Platform",
+    description: "Full-stack shopping platform with Supabase backend.",
+    image: "/projects/ecommerce.jpg",
+    link: "/projects/ecommerce",
+  },
+];
+
+const certificateLogos = [
+  { src: "/certificates/ml.jpg", alt: "Machine Learning Certificate" },
+  { src: "/certificates/fullstack.jpg", alt: "Full Stack Certificate" },
+  { src: "/certificates/genai.jpg", alt: "Generative AI Certificate" },
+  { src: "/certificates/cloud.jpg", alt: "Cloud Certificate" },
+  { src: "/certificates/python.jpg", alt: "Python Certificate" },
+];
 
 const Page = () => {
   const { scrollYProgress } = useScroll();
+  const router = useRouter();
+
   return (
-    <div className=" h-screen text-white  ">
-        <motion.div
-          id="scroll-indicator"
-          style={{
-            scaleX: scrollYProgress,
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 5,
-            originX: 0,
-            backgroundColor: "#38bdf8",
-          }}
-        />
-        {/* <Card/> */}
+    <div className="relative min-h-screen text-white bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+      {/* ================= Background Glow ================= */}
+      <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
 
-        <Navbar />
-      <div className="">
-        <motion.section
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="min-h-screen max-w-6xl mx-auto px-6 py-24"
-        >
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Hi, I&apos;m <span className="text-sky-400">Ishaan Vats</span>
-          </h1>
+      <Navbar />
 
-          <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-3xl">
-            Computer Science undergraduate working in{" "}
-            <span className="text-sky-400 font-medium">
-              <Typewriter
-                cursor
-                cursorBlinking
-                cursorStyle="_"
-                delaySpeed={1500}
-                deleteSpeed={25}
-                loop={0}
-                typeSpeed={75}
-                words={[
-                  "Full-Stack Development",
-                  "Machine Learning",
-                  "Generative AI",
-                  "App Development",
-                ]}
+      {/* ================= Scroll Progress ================= */}
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-600 shadow-lg shadow-sky-500/40 origin-left z-50"
+      />
+
+      <div className="pt-32">
+        {/* ================= HERO ================= */}
+        <section className="max-w-7xl mx-auto px-6 md:px-10 min-h-[90vh] grid md:grid-cols-2 items-center gap-16">
+          {/* LEFT SIDE */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
+              Hi, I&apos;m{" "}
+              <span className="bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+                Ishaan Vats
+              </span>
+            </h1>
+
+            <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-xl">
+              Computer Science undergraduate working in{" "}
+              <span className="text-sky-400 font-medium">
+                <Typewriter
+                  cursor
+                  cursorStyle="_"
+                  delaySpeed={1500}
+                  deleteSpeed={25}
+                  loop={0}
+                  typeSpeed={75}
+                  words={[
+                    "Full-Stack Development",
+                    "Machine Learning",
+                    "Generative AI",
+                    "App Development",
+                  ]}
+                />
+              </span>
+              .
+            </p>
+
+            <p className="mt-4 text-lg text-slate-400 max-w-xl">
+              I build scalable, real-world applications with a strong focus on
+              clean architecture and performance.
+            </p>
+
+            {/* Buttons */}
+            <div className="mt-10 flex gap-6">
+              <button
+                onClick={() => router.push("/projects")}
+                className="px-6 py-3 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-sky-500/30"
+              >
+                View Projects
+              </button>
+
+              <button
+                onClick={() => router.push("/contact")}
+                className="px-6 py-3 rounded-lg border border-sky-500/30 hover:bg-sky-500/10 transition-all duration-300"
+              >
+                Contact Me
+              </button>
+            </div>
+
+            {/* Stats Section */}
+          </motion.div>
+
+          {/* RIGHT SIDE — PROFILE CARD */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            className="hidden md:flex justify-center items-center"
+          >
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="w-[380px]"
+            >
+              <ProfileCard
+                name="Ishaan Vats"
+                title="Software Engineer"
+                handle="ishaanvats74"
+                status="Open to Work"
+                contactText="Contact Me"
+                avatarUrl="/photo.jpg"
+                miniAvatarUrl="/photo.jpg"
+                iconUrl="/icon.png"
+                showUserInfo
+                enableTilt
+                enableMobileTilt
+                onContactClick={() => router.push("/contact")}
+                behindGlowColor="rgba(56, 189, 248, 0.7)"
+                behindGlowSize={650}
+                behindGlowEnabled
+                innerGradient="linear-gradient(145deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.02) 100%)"
               />
-            </span>
-            .
-          </p>
-          <p className=" text-lg md:text-xl text-slate-300 max-w-3xl">
-            {" "}
-            I build scalable, real-world applications with a strong focus on
-            clean architecture and performance.
-          </p>
+            </motion.div>
+          </motion.div>
+        </section>
 
-          <p className="mt-4 text-slate-400">
-            B.Sc. (Hons.) Computer Science · SSCBS, University of Delhi
-          </p>
-          <picture>
-            <source
-              srcSet="https://camo.githubusercontent.com/4f7dc8ffcb63e93dac939f9c6807282fb2e4422326c5c0b5cedf8bfc70e6d1db/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d49736861616e7661747337342673686f775f69636f6e733d74727565266c6f63616c653d656e267468656d653d7261646963616c"
-              media="(prefers-color-scheme: dark)"
+        {/* Divider */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-sky-500/40 to-transparent my-16" />
+        {/* ================= PROJECTS ================= */}
+<section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
+
+  <h2 className="text-3xl font-semibold mb-12 
+  bg-gradient-to-r from-sky-400 to-blue-600 
+  bg-clip-text text-transparent">
+    Projects
+  </h2>
+
+  <div className="relative w-full overflow-hidden">
+
+    <motion.div
+      className="flex gap-8"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{
+        repeat: Infinity,
+        duration: 25,
+        ease: "linear",
+      }}
+    >
+      {[...projects, ...projects].map((project, index) => (
+        <div
+          key={index}
+          onClick={() => router.push(project.link)}
+          className="min-w-[340px] bg-slate-900/60 
+          backdrop-blur-xl border border-slate-800 
+          rounded-2xl overflow-hidden 
+          hover:border-sky-500/40 
+          hover:scale-[1.05] 
+          transition-all duration-300 cursor-pointer"
+        >
+          <div className="h-[200px] overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover hover:scale-110 transition duration-500"
             />
+          </div>
 
-            <img src="https://camo.githubusercontent.com/4f7dc8ffcb63e93dac939f9c6807282fb2e4422326c5c0b5cedf8bfc70e6d1db/68747470733a2f2f6769746875622d726561646d652d73746174732e76657263656c2e6170702f6170693f757365726e616d653d49736861616e7661747337342673686f775f69636f6e733d74727565266c6f63616c653d656e267468656d653d7261646963616c" alt=""/>
-          </picture>
-        </motion.section>
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-white">
+              {project.title}
+            </h3>
+            <p className="text-slate-400 mt-3 text-sm leading-relaxed">
+              {project.description}
+            </p>
 
-        {/* <!-- TECH STACK --> */}
-        <motion.section
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeIn" }}
-          className="min-h-screen max-w-6xl mx-auto px-6 py-16 border-t border-slate-800"
-        >
-          <h2 className="text-3xl font-semibold mb-10">Tech Stack</h2>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Languages */}
-            <div>
-              <h3 className="text-xl font-medium mb-5 text-sky-400">
-                Languages
-              </h3>
-              <div className="flex flex-wrap gap-4">
-                <TechIcons icon={<CPlusPlus size={20} />} label="C++" />
-                <TechIcons icon={<JavaScript size={20} />} label="JavaScript" />
-                <TechIcons icon={<TypeScript size={20} />} label="TypeScript" />
-                <TechIcons icon={<Python size={20} />} label="Python" />
-              </div>
-            </div>
-
-            {/* AI & GenAI */}
-            <div>
-              <h3 className="text-xl font-medium mb-5 text-sky-400">
-                AI & Generative AI
-              </h3>
-              <div className="flex flex-wrap gap-4 items-center">
-                <TechIcons
-                  icon={<StackIcon name="langchain" className="h-5 w-5 " />}
-                  label="LangChain"
-                />
-                <TechIcons
-                  icon={<HuggingFace size={20} />}
-                  label="Hugging Face"
-                />
-              </div>
-            </div>
-
-            {/* Frontend */}
-            <div>
-              <h3 className="text-xl font-medium mb-5 text-sky-400">
-                Frontend
-              </h3>
-              <div className="flex flex-wrap gap-4">
-                <TechIcons icon={<NextJs size={20} />} label="Next.js" />
-                <TechIcons icon={<React size={20} />} label="React.js" />
-                <TechIcons
-                  icon={<TailwindCSS size={20} />}
-                  label="Tailwind CSS"
-                />
-              </div>
-            </div>
-
-            {/* Backend */}
-            <div>
-              <h3 className="text-xl font-medium mb-5 text-sky-400">Backend</h3>
-              <div className="flex flex-wrap gap-4">
-                <TechIcons icon={<NodeJs size={20} />} label="Node.js" />
-                <TechIcons
-                  icon={<ExpressJsLight size={20} />}
-                  label="Express.js"
-                />
-                <TechIcons icon={<FastAPI size={20} />} label="FastAPI" />
-                <TechIcons icon={<Django size={20} />} label="Django" />
-                <TechIcons icon={<FlaskLight size={20} />} label="Flask" />
-              </div>
+            <div className="mt-4 text-sky-400 text-sm font-medium">
+              View Project →
             </div>
           </div>
-        </motion.section>
+        </div>
+      ))}
+    </motion.div>
 
-        {/* <!-- INTERESTS --> */}
-        <motion.section
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="min-h-screen max-w-6xl mx-auto px-6 py-16 border-t border-slate-800"
-        >
-          <h2 className="text-3xl font-semibold mb-6">Areas of Interest</h2>
-          <div className="flex flex-wrap gap-3">
-            <span className="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
-              Machine Learning
-            </span>
-            <span className="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
-              Generative AI
-            </span>
-            <span className="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
-              Full-Stack Development
-            </span>
-            <span className="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
-              App Development
-            </span>
+  </div>
+</section>
+
+{/* Divider */}
+<div className="h-px w-full bg-gradient-to-r 
+from-transparent via-sky-500/40 to-transparent my-16" />
+
+
+        {/* Divider */}
+        <div
+          className="h-px w-full bg-gradient-to-r 
+from-transparent via-sky-500/40 to-transparent my-16"
+        />
+
+        {/* ================= CERTIFICATIONS ================= */}
+        <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
+          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            Certifications
+          </h2>
+
+          <div className="relative h-[220px] overflow-hidden rounded-2xl">
+            <LogoLoop
+              logos={certificateLogos}
+              speed={70}
+              direction="left"
+              logoHeight={180}
+              gap={40}
+              hoverSpeed={0}
+              scaleOnHover
+              fadeOut
+              fadeOutColor="#0f172a"
+              ariaLabel="Certification logos"
+            />
           </div>
-        </motion.section>
+        </section>
+
+        {/* Divider */}
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-sky-500/40 to-transparent my-16" />
+
+        {/* ================= TECH STACK ================= */}
+        <section className="max-w-7xl mx-auto px-6 md:px-10 py-16">
+          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            Tech Stack
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Languages",
+                icons: [
+                  <TechIcons
+                    key="cpp"
+                    icon={<CPlusPlus size={20} />}
+                    label="C++"
+                  />,
+                  <TechIcons
+                    key="js"
+                    icon={<JavaScript size={20} />}
+                    label="JavaScript"
+                  />,
+                  <TechIcons
+                    key="ts"
+                    icon={<TypeScript size={20} />}
+                    label="TypeScript"
+                  />,
+                  <TechIcons
+                    key="py"
+                    icon={<Python size={20} />}
+                    label="Python"
+                  />,
+                ],
+              },
+              {
+                title: "AI & Generative AI",
+                icons: [
+                  <TechIcons
+                    key="lc"
+                    icon={<StackIcon name="langchain" className="h-5 w-5" />}
+                    label="LangChain"
+                  />,
+                  <TechIcons
+                    key="hf"
+                    icon={<HuggingFace size={20} />}
+                    label="Hugging Face"
+                  />,
+                ],
+              },
+              {
+                title: "Frontend",
+                icons: [
+                  <TechIcons
+                    key="next"
+                    icon={<NextJs size={20} />}
+                    label="Next.js"
+                  />,
+                  <TechIcons
+                    key="react"
+                    icon={<React size={20} />}
+                    label="React.js"
+                  />,
+                  <TechIcons
+                    key="tail"
+                    icon={<TailwindCSS size={20} />}
+                    label="Tailwind CSS"
+                  />,
+                ],
+              },
+              {
+                title: "Backend",
+                icons: [
+                  <TechIcons
+                    key="node"
+                    icon={<NodeJs size={20} />}
+                    label="Node.js"
+                  />,
+                  <TechIcons
+                    key="express"
+                    icon={<ExpressJsLight size={20} />}
+                    label="Express.js"
+                  />,
+                  <TechIcons
+                    key="fastapi"
+                    icon={<FastAPI size={20} />}
+                    label="FastAPI"
+                  />,
+                  <TechIcons
+                    key="django"
+                    icon={<Django size={20} />}
+                    label="Django"
+                  />,
+                  <TechIcons
+                    key="flask"
+                    icon={<FlaskLight size={20} />}
+                    label="Flask"
+                  />,
+                ],
+              },
+            ].map((section, index) => (
+              <div
+                key={index}
+                className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 hover:border-sky-500/40 transition-all duration-300"
+              >
+                <h3 className="text-xl font-medium mb-6 text-sky-400">
+                  {section.title}
+                </h3>
+                <div className="flex flex-wrap gap-4">{section.icons}</div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
+
       <Footer />
     </div>
   );
