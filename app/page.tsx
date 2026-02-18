@@ -10,7 +10,7 @@ export default function Page() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // router.push('/Home')
+      router.push('/Home')
     }, 3200)
 
     return () => clearTimeout(timer)

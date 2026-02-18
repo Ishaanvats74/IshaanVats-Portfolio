@@ -1,18 +1,14 @@
 "use client";
 
 import { motion } from "motion/react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { mlProjects, mobileProjects, webProjects } from "@/lib/constanst";
 
 const Page = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+    <div className="relative min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
-
-      <Navbar />
+      <div className="absolute -top-50 -left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="pt-32 px-6 md:px-10 max-w-7xl mx-auto">
         {/* ================= Heading ================= */}
@@ -23,7 +19,7 @@ const Page = () => {
         >
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
             My{" "}
-            <span className="bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
               Projects
             </span>
           </h1>
@@ -36,7 +32,7 @@ const Page = () => {
 
         {/* ================= WEB DEVELOPMENT SECTION ================= */}
         <section className="mt-24">
-          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
             Web Development Projects
           </h2>
 
@@ -51,7 +47,7 @@ const Page = () => {
                 viewport={{ once: true }}
                 className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300"
               >
-                <div className="h-[220px] overflow-hidden">
+                <div className="h-55 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -81,7 +77,7 @@ const Page = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 hover:scale-105 transition"
+                        className="px-4 py-2 rounded-lg bg-linear-to-r from-sky-500 to-blue-600 hover:scale-105 transition"
                       >
                         Live Demo
                       </a>
@@ -95,7 +91,7 @@ const Page = () => {
 
         {/* ================= MACHINE LEARNING SECTION ================= */}
         <section className="mt-28">
-          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
             Machine Learning Projects
           </h2>
 
@@ -133,7 +129,7 @@ const Page = () => {
 
         {/* ================= MOBILE APPLICATIONS ================= */}
         <section className="mt-28">
-          <h2 className="text-3xl font-semibold mb-12 bg-gradient-to-r from-emerald-400 to-green-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-emerald-400 to-green-600 bg-clip-text text-transparent">
             Mobile Applications
           </h2>
 
@@ -148,7 +144,7 @@ const Page = () => {
                 viewport={{ once: true }}
                 className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
               >
-                <div className="h-[220px] overflow-hidden">
+                <div className="h-55 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -179,8 +175,6 @@ const Page = () => {
           </div>
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 };

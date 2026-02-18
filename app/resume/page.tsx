@@ -1,35 +1,17 @@
 "use client";
 
+import { resumes } from "@/lib/constanst";
 import { motion } from "motion/react";
-import Footer from "@/components/Footer";
-
-const resumes = [
-  {
-    title: "Software Engineer Resume",
-    description:
-      "Focused on full-stack development, scalable systems, and backend architecture.",
-    file: "/resume/WebDevResume.pdf",
-  },
-  {
-    title: "Machine Learning Resume",
-    description:
-      "Focused on ML models, AI systems, data pipelines, and generative AI projects.",
-    file: "/resume/DataScientist_Resume.pdf",
-  },
-];
 
 const Page = () => {
   return (
-    <div className="relative min-h-screen text-white bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
-
+    <div className="relative min-h-screen text-white bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       {/* Background Glow (Same as Home) */}
-      <div className="absolute top-[-200px] left-[-200px] w-[500px] h-[500px] bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-200px] right-[-200px] w-[500px] h-[500px] bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -top-50 l-left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
 
       <div className="pt-32">
-
         <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
-
           {/* Heading */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -39,7 +21,7 @@ const Page = () => {
           >
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.1] tracking-tight">
               My{" "}
-              <span className="bg-gradient-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
                 Resume
               </span>
             </h1>
@@ -51,7 +33,6 @@ const Page = () => {
 
           {/* Resume Cards */}
           <div className="grid md:grid-cols-2 gap-12">
-
             {resumes.map((resume, index) => (
               <motion.div
                 key={index}
@@ -62,9 +43,7 @@ const Page = () => {
                 viewport={{ once: true }}
                 className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-sky-500/40 hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300"
               >
-                <h3 className="text-2xl font-semibold">
-                  {resume.title}
-                </h3>
+                <h3 className="text-2xl font-semibold">{resume.title}</h3>
 
                 <p className="text-slate-400 mt-4 text-sm leading-relaxed">
                   {resume.description}
@@ -72,7 +51,6 @@ const Page = () => {
 
                 {/* Buttons */}
                 <div className="flex gap-4 mt-8">
-
                   {/* View Button */}
                   <a
                     href={resume.file}
@@ -87,22 +65,16 @@ const Page = () => {
                   <a
                     href={resume.file}
                     download
-                    className="px-5 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 hover:scale-105 transition"
+                    className="px-5 py-2 rounded-lg bg-linear-to-r from-sky-500 to-blue-600 hover:scale-105 transition"
                   >
                     Download
                   </a>
-
                 </div>
               </motion.div>
             ))}
-
           </div>
-
         </section>
-
       </div>
-
-      <Footer />
     </div>
   );
 };

@@ -47,7 +47,7 @@ const Navbar = () => {
                 ${
                   isActive
                     ? "text-sky-400"
-                    : "text-slate-300 hover:text-white"
+                    : "text-slate-300 hover:text-white hover:cursor-pointer"
                 }`}
               >
                 {item.name}
