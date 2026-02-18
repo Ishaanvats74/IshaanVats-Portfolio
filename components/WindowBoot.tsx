@@ -135,7 +135,7 @@ export default function WindowBoot() {
 
   if (isComplete) {
     return (
-      <div className="h-screen w-screen bg-gradient-to-br bg-black flex items-center justify-center">
+      <div className="h-screen w-screen bg-linear-to-br bg-black flex items-center justify-center">
         <div className="text-center space-y-6 animate-fade-in">
           <h1 className="text-6xl font-bold text-white tracking-tight">
             Welcome
@@ -149,7 +149,7 @@ export default function WindowBoot() {
   }
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-br bg-black flex flex-col items-center justify-center gap-12">
+    <div className="h-screen w-screen bg-linear-to-br bg-black flex flex-col items-center justify-center gap-12">
       {/* Animation Container */}
       <div className="relative w-24 h-24">
         {[0, 1, 2, 3].map((i) => (
@@ -175,7 +175,7 @@ export default function WindowBoot() {
         {/* Progress Bar */}
         <div className="w-64 h-1 bg-slate-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-sky-400 to-blue-500 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+            className="h-full bg-linear-to-r from-sky-400 to-blue-500 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(56,189,248,0.5)]"
             style={{ width: `${Math.min(loadingProgress, 100)}%` }}
           />
         </div>
