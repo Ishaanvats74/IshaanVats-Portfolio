@@ -96,24 +96,52 @@ const Page = () => {
             </motion.div>
 
             {/* CONTACT INFO */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col gap-8"
-            >
-              <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold mb-4">Email</h3>
-                <Link
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=404ishaan@gmail.com"
-                  target="_blank"
-                  className="text-sky-400 hover:underline"
-                >
-                  404ishaan@gmail.com
-                </Link>
-              </div>
-            </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 60 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.2 }}
+  viewport={{ once: true }}
+  className="flex flex-col gap-8"
+>
+  {/* EMAIL */}
+  <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8">
+    <h3 className="text-xl font-semibold mb-4">Email</h3>
+    <Link
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=404ishaan@gmail.com"
+      rel="noopener noreferrer"
+      target="_blank"
+      className="text-sky-400 hover:underline"
+    >
+      404ishaan@gmail.com
+    </Link>
+  </div>
+
+  {/* LINKEDIN */}
+  <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8">
+    <h3 className="text-xl font-semibold mb-4">LinkedIn</h3>
+    <Link
+      href="https://www.linkedin.com/in/ishaan-vats-565069334/"
+      rel="noopener noreferrer"
+      target="_blank"
+      className="text-sky-400 hover:underline"
+    >
+      linkedin.com/in/Ishaan-vats
+    </Link>
+  </div>
+
+  {/* GITHUB */}
+  <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8">
+    <h3 className="text-xl font-semibold mb-4">GitHub</h3>
+    <Link
+      href="https://github.com/Ishaanvats74"
+      rel="noopener noreferrer"
+      target="_blank"
+      className="text-sky-400 hover:underline"
+    >
+      github.com/Ishaanvats74
+    </Link>
+  </div>
+</motion.div>
           </div>
         </section>
       </div>

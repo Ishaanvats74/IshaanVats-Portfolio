@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { certificates } from "@/lib/constanst";
 import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 const Page = () => {
   return (
@@ -47,9 +48,11 @@ const Page = () => {
               >
                 {/* Certificate Image */}
                 <div className="h-55 overflow-hidden">
-                  <img
+                  <Image
                     src={cert.image}
                     alt={cert.title}
+                    height={200}
+                    width={200}
                     className="w-full h-full object-cover"
                   />
                 </div>
