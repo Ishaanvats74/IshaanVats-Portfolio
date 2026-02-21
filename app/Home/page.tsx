@@ -164,7 +164,7 @@ const Page = () => {
         <div
           key={index}
           onClick={() => router.push(project.link)}
-          className="w-85 flex-0 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
+          className="w-85 shrink-0 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
         >
 
           {/* IMAGE (FIXED HEIGHT) */}
