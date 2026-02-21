@@ -116,50 +116,11 @@ export const certificates = [
   image: "/certificates/build-with-india-top.png",
     link: "/certificates/build-with-india-top.png",
 },
-
 ];
 
-
-export const featuredProjects = [
-  {
-    title: "Prompto - Real-Time AI Prompt Guessing Game",
-    description:
-      "A real-time multiplayer AI-powered prompt guessing game where players compete to identify AI-generated prompts. Built with full-stack technologies and live interaction handling for seamless gameplay.",
-    image: "/projects/prompto.png",
-    link: "/projects/prompto",
-  },
-  {
-    title: "SassyTalks - Real-Time Video Conferencing App",
-    description:
-      "A real-time video conferencing application inspired by Zoom, supporting live video calls, meeting rooms, and user authentication. Designed to handle peer-to-peer communication and real-time interaction.",
-    image: "/projects/sassyTalks.png",
-    link: "/projects/sassytalks",
-  },
-  {
-    title: "Canteen Notify",
-    description:
-      "A notification-based system that informs users about menu updates, food availability, and canteen announcements in real time, improving communication efficiency within campus environments.",
-    image: "/projects/canteen_notify.png",
-    link: "/projects/canteen-notify",
-  },
-  {
-    title: "Donation Site",
-    description:
-      "A full-stack donation platform integrating PayU payment gateway for secure transactions. Built to handle campaign listings, user contributions, and payment processing workflows.",
-    image: "/projects/donation.png",
-    link: "/projects/donation-site",
-  },
-];
 
 export const mlProjects = [
-  {
-    title: "Movie Recommendation System",
-    description:
-      "A machine learning-based movie recommendation system using collaborative filtering and content-based techniques to suggest personalized movie recommendations.",
-    image: "/projects/movie-rec.jpg",
-    github: "https://github.com/Ishaanvats74/Movie-Recommendaction",
-    live: "#",
-  },
+  
   {
     title: "Movie Recommendation (ML Version)",
     description:
@@ -227,6 +188,44 @@ export const mlProjects = [
   },
 ];
 
+export const featuredProjects = [
+  {
+    title: "Prompto - Real-Time AI Prompt Guessing Game",
+    description:
+      "A real-time multiplayer AI-powered prompt guessing game where players compete to identify AI-generated prompts. Built with full-stack technologies and live interaction handling for seamless gameplay.",
+    image: "/projects/prompto.png",
+    link: "https://github.com/Ishaanvats74/Prompto",
+  },
+  {
+    title: "SassyTalks - Real-Time Video Conferencing App",
+    description:
+      "A real-time video conferencing application inspired by Zoom, supporting live video calls, meeting rooms, and user authentication. Designed to handle peer-to-peer communication and real-time interaction.",
+    image: "/projects/sassyTalks.png",
+    link: "https://github.com/Ishaanvats74/SassyTalks",
+  },
+  {
+    title: "Canteen Notify",
+    description:
+      "A notification-based system that informs users about menu updates, food availability, and canteen announcements in real time, improving communication efficiency within campus environments.",
+    image: "/projects/canteen_notify.png",
+    link: "https://github.com/Ishaanvats74/CanteenNotify-",
+  },
+  {
+    title: "Donation Site",
+    description:
+      "A full-stack donation platform integrating PayU payment gateway for secure transactions. Built to handle campaign listings, user contributions, and payment processing workflows.",
+    image: "/projects/donation.png",
+    link: "https://github.com/Ishaanvats74/Donation_site",
+  },
+   {
+  title: "AI-Research-Paper-Assistant-RAG",
+  description:
+    "An AI-powered Research Paper Assistant built using the Retrieval-Augmented Generation (RAG) architecture that allows users to upload academic PDFs and interact with them through natural language queries. The system extracts content from research papers, converts it into vector embeddings, and stores it in a vector database to enable context-aware responses using Large Language Models (LLMs). It helps users quickly understand complex research content by providing accurate, document-grounded answers in real-time.",
+  image: "/projects/research-assistant.png",
+  link: "https://github.com/Ishaanvats74/AI-Research-Paper-Assistant-RAG-",
+},
+];
+
 export const webProjects = [
   {
     title: "Prompto - Real-Time AI Prompt Guessing Game",
@@ -244,6 +243,14 @@ export const webProjects = [
     github: "https://github.com/Ishaanvats74/SassyTalks",
     live: "https://sassy-talks.vercel.app/",
   },
+  {
+  title: "AI-Research-Paper-Assistant-RAG",
+  description:
+    "An AI-powered Research Paper Assistant built using the Retrieval-Augmented Generation (RAG) architecture that allows users to upload academic PDFs and interact with them through natural language queries. The system extracts content from research papers, converts it into vector embeddings, and stores it in a vector database to enable context-aware responses using Large Language Models (LLMs). It helps users quickly understand complex research content by providing accurate, document-grounded answers in real-time.",
+  image: "/projects/research-assistant.jpg",
+  github: "https://github.com/Ishaanvats74/AI-Research-Paper-Assistant-RAG-",
+  live: "https://ai-research-paper-assistant-rag.vercel.app/",
+},
   {
     title: "Canteen Notify",
     description:
@@ -275,6 +282,14 @@ export const webProjects = [
     image: "/projects/truth-dare.png",
     github: "https://github.com/Ishaanvats74/Truth_or_Dare_MERN",
     live: "https://truth-or-dare-mern.vercel.app/",
+  },
+  {
+    title: "Movie Recommendation System",
+    description:
+      "A machine learning-based movie recommendation system using collaborative filtering and content-based techniques to suggest personalized movie recommendations.",
+    image: "/projects/movie-rec.jpg",
+    github: "https://github.com/Ishaanvats74/Movie-Recommendaction",
+    live: "https://movie-recommendaction.vercel.app/",
   },
 ];
 
