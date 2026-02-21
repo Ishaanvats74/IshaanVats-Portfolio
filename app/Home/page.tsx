@@ -22,6 +22,8 @@ import StackIcon from "tech-stack-icons";
 import { Typewriter } from "react-simple-typewriter";
 import { useRouter } from "next/navigation";
 import { certificates, featuredProjects } from "@/lib/constanst";
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 const Page = () => {
   const { scrollYProgress } = useScroll();
@@ -32,7 +34,7 @@ const Page = () => {
       {/* ================= Background Glow ================= */}
       <div className="absolute -top-50 -left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
-
+      <Navbar />
       {/* ================= Scroll Progress ================= */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
@@ -139,54 +141,65 @@ const Page = () => {
         <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
 
         {/* ================= PROJECTS ================= */}
-        <section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
-          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
-            Projects
-          </h2>
+        {/* ================= PROJECTS ================= */}
+<section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
+  <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+    Projects
+  </h2>
 
-          <div className="relative w-full ">
-            <motion.div
-              className="flex gap-8"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                repeat: Infinity,
-                duration: 25,
-                ease: "linear",
-              }}
-            >
-              {[...featuredProjects, ...featuredProjects].map(
-                (project, index) => (
-                  <div
-                    key={index}
-                    onClick={() => router.push(project.link)}
-                    className="min-w-85 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="h-50 overflow-hidden">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover hover:scale-110 transition duration-500"
-                      />
-                    </div>
+  <div className="relative w-full ">
 
-                    <div className="p-6">
-                      <h3 className="text-xl font-semibold text-white">
-                        {project.title}
-                      </h3>
-                      <p className="text-slate-400 mt-3 text-sm leading-relaxed">
-                        {project.description}
-                      </p>
+    <motion.div
+      className="flex gap-8 w-max will-change-transform"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 25,
+        ease: "linear",
+      }}
+    >
 
-                      <div className="mt-4 text-sky-400 text-sm font-medium">
-                        View Project →
-                      </div>
-                    </div>
-                  </div>
-                ),
-              )}
-            </motion.div>
+      {[...featuredProjects, ...featuredProjects].map((project, index) => (
+        <div
+          key={index}
+          onClick={() => router.push(project.link)}
+          className="w-85 flex-0 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
+        >
+
+          {/* IMAGE (FIXED HEIGHT) */}
+          <div className="h-50 overflow-hidden">
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={340}
+              height={200}
+              className="w-full h-full object-cover hover:scale-110 transition duration-500"
+            />
           </div>
-        </section>
+
+          {/* CONTENT */}
+          <div className="p-6">
+            <h3 className="text-xl font-semibold text-white line-clamp-2">
+              {project.title}
+            </h3>
+
+            <p className="text-slate-400 mt-3 text-sm leading-relaxed h-35 overflow-y-auto pr-1">
+              {project.description}
+            </p>
+
+            <div className="mt-4 text-sky-400 text-sm font-medium">
+              View Project →
+            </div>
+          </div>
+
+        </div>
+      ))}
+
+    </motion.div>
+
+  </div>
+</section>
 
         {/* Divider */}
         <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
@@ -214,9 +227,11 @@ const Page = () => {
                   className="min-w-85 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
                 >
                   <div className="h-50 overflow-hidden">
-                    <img
+                    <Image
                       src={certificate.image}
                       alt={certificate.title}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover hover:scale-110 transition duration-500"
                     />
                   </div>

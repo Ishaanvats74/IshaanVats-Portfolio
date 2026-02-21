@@ -4,36 +4,36 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";
+import Navbar from "@/components/Navbar";
 
 const Page = () => {
-
   const form = useRef<HTMLFormElement | null>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs.sendForm(
-      "YOUR_SERVICE_ID",     // replace
-      "YOUR_TEMPLATE_ID",    // replace
-      form.current!,
-      "YOUR_PUBLIC_KEY"      // replace
-    )
-    .then(() => {
-      alert("Message Sent Successfully!");
-      (e.target as HTMLFormElement).reset();
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("Failed to send message.");
-    });
+    emailjs
+      .sendForm(
+        "YOUR_SERVICE_ID", // replace
+        "YOUR_TEMPLATE_ID", // replace
+        form.current!,
+        "YOUR_PUBLIC_KEY", // replace
+      )
+      .then(() => {
+        alert("Message Sent Successfully!");
+        (e.target as HTMLFormElement).reset();
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Failed to send message.");
+      });
   };
 
   return (
     <div className="relative min-h-screen text-white bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
-
       <div className="pt-32">
+        <Navbar/>
         <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
-
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,6 @@ const Page = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-16">
-
             {/* CONTACT FORM */}
             <motion.div
               initial={{ opacity: 0, y: 60 }}
@@ -58,13 +57,11 @@ const Page = () => {
               viewport={{ once: true }}
               className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-8 hover:border-sky-500/40 transition-all duration-300"
             >
-
               <form
                 ref={form}
                 onSubmit={sendEmail}
                 className="flex flex-col gap-6"
               >
-
                 <input
                   type="text"
                   name="from_name"
@@ -95,7 +92,6 @@ const Page = () => {
                 >
                   Send Message
                 </button>
-
               </form>
             </motion.div>
 
@@ -118,7 +114,6 @@ const Page = () => {
                 </Link>
               </div>
             </motion.div>
-
           </div>
         </section>
       </div>

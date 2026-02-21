@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 import { mlProjects, mobileProjects, webProjects } from "@/lib/constanst";
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
 
 const Page = () => {
   return (
@@ -9,7 +11,7 @@ const Page = () => {
       {/* Background Glow */}
       <div className="absolute -top-50 -left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
-
+      <Navbar/>
       <div className="pt-32 px-6 md:px-10 max-w-7xl mx-auto">
         {/* ================= Heading ================= */}
         <motion.div
@@ -48,7 +50,7 @@ const Page = () => {
                 className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:shadow-2xl hover:shadow-sky-500/10 transition-all duration-300"
               >
                 <div className="h-55 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
@@ -145,7 +147,7 @@ const Page = () => {
                 className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
               >
                 <div className="h-55 overflow-hidden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"

@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/components/Navbar";
 import { resumes } from "@/lib/constanst";
 import { motion } from "motion/react";
 
@@ -9,7 +10,7 @@ const Page = () => {
       {/* Background Glow (Same as Home) */}
       <div className="absolute -top-50 l-left-50 w-125 h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute -bottom-50 -right-50 w-125 h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
-
+      <Navbar/>
       <div className="pt-32">
         <section className="max-w-7xl mx-auto px-6 md:px-10 py-20">
           {/* Heading */}
