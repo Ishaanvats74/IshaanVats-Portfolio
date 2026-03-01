@@ -1,4 +1,10 @@
-const TechIcons = ({ icon, label }:{icon:React.ReactNode, label:string }) => {
+const TechIcons = ({
+  icon,
+  label,
+}: {
+  icon: React.ReactNode;
+  label: string;
+}) => {
   return (
     <div
       className="
@@ -19,6 +25,5 @@ const TechIcons = ({ icon, label }:{icon:React.ReactNode, label:string }) => {
     </div>
   );
 };
-
 
 export default TechIcons;

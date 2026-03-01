@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -140,9 +138,7 @@ export default function WindowBoot() {
           <h1 className="text-6xl font-bold text-white tracking-tight">
             Welcome
           </h1>
-          <p className="text-xl text-blue-200">
-            Loading portfolio...
-          </p>
+          <p className="text-xl text-blue-200">Loading portfolio...</p>
         </div>
       </div>
     );
@@ -171,7 +167,7 @@ export default function WindowBoot() {
         <div className="text-blue-200 text-lg font-light tracking-widest">
           INITIALIZING
         </div>
-        
+
         {/* Progress Bar */}
         <div className="w-64 h-1 bg-slate-800 rounded-full overflow-hidden">
           <div
@@ -179,7 +175,7 @@ export default function WindowBoot() {
             style={{ width: `${Math.min(loadingProgress, 100)}%` }}
           />
         </div>
-        
+
         <div className="text-sky-300 text-sm font-mono">
           {Math.min(Math.round(loadingProgress), 100)}%
         </div>

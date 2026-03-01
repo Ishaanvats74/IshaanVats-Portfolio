@@ -142,64 +142,60 @@ const Page = () => {
 
         {/* ================= PROJECTS ================= */}
         {/* ================= PROJECTS ================= */}
-<section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
-  <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
-    Projects
-  </h2>
+        <section className="max-w-7xl mx-auto px-6 md:px-10 py-20 overflow-hidden">
+          <h2 className="text-3xl font-semibold mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            Projects
+          </h2>
 
-  <div className="relative w-full ">
+          <div className="relative w-full ">
+            <motion.div
+              className="flex gap-8 w-max will-change-transform"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 25,
+                ease: "linear",
+              }}
+            >
+              {[...featuredProjects, ...featuredProjects].map(
+                (project, index) => (
+                  <div
+                    key={index}
+                    onClick={() => router.push(project.link)}
+                    className="w-85 shrink-0 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
+                  >
+                    {/* IMAGE (FIXED HEIGHT) */}
+                    <div className="h-50 overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={340}
+                        height={200}
+                        className="w-full h-full object-cover hover:scale-110 transition duration-500"
+                      />
+                    </div>
 
-    <motion.div
-      className="flex gap-8 w-max will-change-transform"
-      animate={{ x: ["0%", "-50%"] }}
-      transition={{
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 25,
-        ease: "linear",
-      }}
-    >
+                    {/* CONTENT */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-white line-clamp-2">
+                        {project.title}
+                      </h3>
 
-      {[...featuredProjects, ...featuredProjects].map((project, index) => (
-        <div
-          key={index}
-          onClick={() => router.push(project.link)}
-          className="w-85 shrink-0 bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:scale-[1.05] transition-all duration-300 cursor-pointer"
-        >
+                      <p className="text-slate-400 mt-3 text-sm leading-relaxed h-35 overflow-y-auto pr-1">
+                        {project.description}
+                      </p>
 
-          {/* IMAGE (FIXED HEIGHT) */}
-          <div className="h-50 overflow-hidden">
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={340}
-              height={200}
-              className="w-full h-full object-cover hover:scale-110 transition duration-500"
-            />
+                      <div className="mt-4 text-sky-400 text-sm font-medium">
+                        View Project →
+                      </div>
+                    </div>
+                  </div>
+                ),
+              )}
+            </motion.div>
           </div>
-
-          {/* CONTENT */}
-          <div className="p-6">
-            <h3 className="text-xl font-semibold text-white line-clamp-2">
-              {project.title}
-            </h3>
-
-            <p className="text-slate-400 mt-3 text-sm leading-relaxed h-35 overflow-y-auto pr-1">
-              {project.description}
-            </p>
-
-            <div className="mt-4 text-sky-400 text-sm font-medium">
-              View Project →
-            </div>
-          </div>
-
-        </div>
-      ))}
-
-    </motion.div>
-
-  </div>
-</section>
+        </section>
 
         {/* Divider */}
         <div className="h-px w-full bg-linear-to-r from-transparent via-sky-500/40 to-transparent my-16" />
