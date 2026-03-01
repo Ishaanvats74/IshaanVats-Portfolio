@@ -14,10 +14,10 @@ const Page = () => {
 
     emailjs
       .sendForm(
-        process.env.YOUR_SERVICE_ID!, 
-        process.env.YOUR_TEMPLATE_ID!, 
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, 
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, 
         form.current!,
-        process.env.YOUR_PUBLIC_KEY!
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       )
       .then(() => {
         alert("Message Sent Successfully!");
