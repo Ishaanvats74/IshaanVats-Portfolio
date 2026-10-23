@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+<<<<<<< HEAD
     "target": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+=======
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+>>>>>>> 6798fc1c6c1afb8e2ad8bafe9c9747530a753689
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -23,12 +28,16 @@
       }
     ],
     "paths": {
+<<<<<<< HEAD
       "@/*": [
         "./src/*"
       ],
       "@payload-config": [
         "./src/payload.config.ts"
       ]
+=======
+      "@/*": ["./*"]
+>>>>>>> 6798fc1c6c1afb8e2ad8bafe9c9747530a753689
     }
   },
   "include": [
@@ -36,9 +45,16 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+<<<<<<< HEAD
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
   ]
+=======
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+, "components/LogoLoop.tsx"  ],
+  "exclude": ["node_modules"]
+>>>>>>> 6798fc1c6c1afb8e2ad8bafe9c9747530a753689
 }

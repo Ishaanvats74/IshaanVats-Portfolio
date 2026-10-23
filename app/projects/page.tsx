@@ -1,0 +1,196 @@
+"use client";
+
+import { motion } from "motion/react";
+import { mlProjects, mobileProjects, webProjects } from "@/lib/constanst";
+import Navbar from "@/components/Navbar";
+import Image from "next/image";
+
+const Page = () => {
+  return (
+    <div className="relative min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute -top-40 -left-40 w-80 h-80 md:w-125 md:h-125 bg-sky-500/20 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -bottom-40 -right-40 w-80 h-80 md:w-125 md:h-125 bg-indigo-600/20 blur-[150px] rounded-full pointer-events-none" />
+
+      <Navbar />
+
+      <div className="pt-24 md:pt-32 px-4 sm:px-6 md:px-10 max-w-7xl mx-auto">
+        {/* ================= Heading ================= */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            My{" "}
+            <span className="bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h1>
+
+          <p className="text-slate-400 mt-4 md:mt-6 text-sm sm:text-base max-w-2xl">
+            A collection of machine learning systems and full-stack web
+            applications I’ve built.
+          </p>
+        </motion.div>
+
+        {/* ================= WEB DEVELOPMENT ================= */}
+        <section className="mt-16 md:mt-24">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-8 md:mb-12 bg-linear-to-r from-sky-400 to-blue-600 bg-clip-text text-transparent">
+            Web Development Projects
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+            {webProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-sky-500/40 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300"
+              >
+                <div className="h-45 sm:h-50 md:h-55 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-slate-400 mt-3 md:mt-4 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-3 mt-5 md:mt-6">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 text-sm rounded-lg border border-sky-500/40 hover:bg-sky-500/10 transition"
+                    >
+                      GitHub
+                    </a>
+
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 text-sm rounded-lg bg-linear-to-r from-sky-500 to-blue-600 hover:scale-105 transition"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= MACHINE LEARNING ================= */}
+        <section className="mt-20 md:mt-28">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-8 md:mb-12 bg-linear-to-r from-purple-400 to-indigo-600 bg-clip-text text-transparent">
+            Machine Learning Projects
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+            {mlProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 md:p-6 hover:border-purple-500/40 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300"
+              >
+                <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
+                  {project.title}
+                </h3>
+
+                <p className="text-slate-400 mt-3 md:mt-4 text-sm leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="mt-5 md:mt-6">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 text-sm rounded-lg border border-purple-500/40 hover:bg-purple-500/10 transition"
+                  >
+                    View on GitHub
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= MOBILE APPLICATIONS ================= */}
+        <section className="mt-20 md:mt-28">
+          <h2 className="text-2xl sm:text-3xl font-semibold mb-8 md:mb-12 bg-linear-to-r from-emerald-400 to-green-600 bg-clip-text text-transparent">
+            Mobile Applications
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
+            {mobileProjects.map((project, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.04 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/40 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
+              >
+                <div className="h-45 sm:h-50 md:h-55 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-semibold">
+                    {project.title}
+                  </h3>
+
+                  <p className="text-slate-400 mt-3 md:mt-4 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="mt-5 md:mt-6">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 text-sm rounded-lg border border-emerald-500/40 hover:bg-emerald-500/10 transition"
+                    >
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default Page;
