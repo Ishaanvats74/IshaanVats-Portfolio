@@ -4,7 +4,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { getSettings, cmsConfigured } from '@/lib/data'
 import { Navigation } from '@/components/navigation'
 import { MotionLayer } from '@/components/motion-layer'
-import { Reveal } from '@/components/experience'
+import { MagneticLink, Reveal } from '@/components/experience'
 import { ExternalLink } from '@/components/content'
 import './globals.css'
 import '@fontsource-variable/space-grotesk'
@@ -62,13 +62,13 @@ export default async function Layout({
                 <span>THE NEXT CHAPTER.</span>
               </h2>
               {settings.email && (
-                <a
+                <MagneticLink
                   className="circle-button"
                   href={`mailto:${settings.email}`}
-                  aria-label={`Email ${settings.name}`}
+                  ariaLabel={`Email ${settings.name}`}
                 >
                   <ArrowUpRight />
-                </a>
+                </MagneticLink>
               )}
             </div>
             <div className="footer-links">

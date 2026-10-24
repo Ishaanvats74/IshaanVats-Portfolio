@@ -20,8 +20,8 @@ export function Navigation({ settings }: { settings: Settings }) {
       <Link className="wordmark" href="/" aria-label={`${settings.name} home`}>
         IV<span className="brand-dot">/</span>
       </Link>
-      <span className="header-note">
-        {settings.name}
+      <span className="header-note name-switch" tabIndex={0} aria-label={`${settings.name}, personal portfolio`}>
+        <span className="header-name" aria-hidden="true"><span className="name-latin">{settings.name}</span><span className="name-katakana" lang="ja">イシャーン・ヴァツ</span></span>
         <br />
         <span>PERSONAL PORTFOLIO</span>
       </span>

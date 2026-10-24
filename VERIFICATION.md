@@ -1,4 +1,10 @@
-# Verification — 23 October 2026
+# Verification — 24 October 2026
+
+## Blank collection creation forms — 24 October 2026
+
+Payload's Document view creates an empty autosave draft during the Create New GET render. The unconditional collection afterChange hook called revalidateTag at that point, which Next rejects during render. Shared publishedHooks now invalidates only when the new or previous document is published. Draft initialization and subsequent draft-only autosaves skip invalidation; publishing, published edits, unpublishing, and deletion still invalidate. This is applied to every portfolio collection and Media. Global settings retain their existing save hook.
+
+Validation: all fourteen tests pass, including a regression test using an invalidator that throws during draft initialization and coverage of publication transitions and deletion. Browser interaction was not verified in this pass.
 
 ## Admin media picker authentication and storage schema — 23 October 2026
 

@@ -1,5 +1,6 @@
 import type { Access, CollectionConfig, Field } from 'payload'
 import { revalidateTag } from 'next/cache'
+import { publishedHooks } from './published-hooks'
 import { dates, gallery, image, relation, responsibilities, rich, rows, seo, slug, text, url, validateMedia } from './fields'
 
 export const authenticated: Access = ({ req }) => Boolean(req.user)
@@ -15,7 +16,7 @@ const content = (name: string, fields: Field[], title = 'title'): CollectionConf
   slug: name, admin: { useAsTitle: title, group: 'Portfolio', defaultColumns: [title, '_status', 'updatedAt'] },
   access: { read: published, create: authenticated, update: authenticated, delete: authenticated },
   versions: { drafts: { autosave: true }, maxPerDoc: 20 },
-  hooks: { afterChange: [({ doc }) => { refresh(); return doc }], afterDelete: [({ doc }) => { refresh(); return doc }] },
+  hooks: publishedHooks(refresh),
   fields,
 })
 const tags = rows('technologies', [text('name', true)])
@@ -59,7 +60,7 @@ export const Media: CollectionConfig = {
   slug: 'media', admin: { group: 'Assets', useAsTitle: 'alt' },
   access: { read: published, create: authenticated, update: authenticated, delete: authenticated },
   versions: { drafts: true, maxPerDoc: 10 },
-  hooks: { afterChange: [({ doc }) => { refresh(); return doc }], afterDelete: [({ doc }) => { refresh(); return doc }] },
+  hooks: publishedHooks(refresh),
   upload: { staticDir: 'media', mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'application/pdf'],
     imageSizes: [{ name: 'card', width: 900, height: 675, position: 'centre' }, { name: 'thumbnail', width: 400, height: 300 }], adminThumbnail: 'thumbnail' },
   fields: [text('alt', true), text('caption'), text('attribution'), url('attributionURL')],

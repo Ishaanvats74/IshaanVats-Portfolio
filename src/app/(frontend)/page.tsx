@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { ArrowDown, ArrowUpRight, Code2, MapPin } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Code2, GraduationCap, Users, MapPin } from 'lucide-react'
 import { getEntries, getSettings } from '@/lib/data'
 import { AnimeBackground } from '@/components/anime-background'
 import { AnimeTitle } from '@/components/anime-title'
 import { OpeningSequence } from '@/components/opening-sequence'
-import { StudioVisual } from '@/components/visual'
 import {
   Approach,
   MagneticLink,
@@ -78,8 +77,7 @@ export default async function Home() {
           </div>
           <AnimeTitle name={settings.name} />
           <div className="hero-description">
-            <h2>{settings.headline}</h2>
-            <p>{settings.homepage?.intro}</p>
+            <h2>Full-Stack Developer &amp; AI Explorer building tools that connect people.</h2>
           </div>
           <div className="hero-actions-new">
             <MagneticLink href="#work" className="button">
@@ -155,10 +153,17 @@ export default async function Home() {
                 <br />
                 <em>AN UNFINISHED STORY.</em>
               </h2>
-              <p>{settings.biography}</p>
-              <div className="education-data">
-                <span className="mono">CURRENT CHAPTER</span>
-                <p>{settings.education}</p>
+              <div className="origin-facts">
+                {[
+                  { Icon: GraduationCap, label: 'Education', value: 'B.Sc. (Hons) CS @ SSCBS, University of Delhi' },
+                  { Icon: Code2, label: 'Focus', value: 'Full-Stack Systems & AI Engineering' },
+                  { Icon: Users, label: 'Community', value: 'Tech & Event Lead @ Geek Room' },
+                ].map(({ Icon, label, value }, index) => (
+                  <Reveal className="origin-fact" key={label} delay={index * 0.09}>
+                    <Icon size={22} strokeWidth={1.5} aria-hidden="true" />
+                    <div><h3>{label}</h3><p>{value}</p></div>
+                  </Reveal>
+                ))}
               </div>
               <Link href="/about" className="text-link">
                 Read my story
@@ -270,7 +275,7 @@ export default async function Home() {
         {selected.length ? (
           <div className="mission-grid">
             {selected.map((entry, index) => (
-              <Reveal key={entry.id} className="mission-item">
+              <Reveal key={entry.id} className="mission-item" delay={(index % 2) * 0.12}>
                 <ProjectCard entry={entry} index={index} />
               </Reveal>
             ))}
@@ -379,12 +384,14 @@ export default async function Home() {
                 <span className="message-tag">
                   COMMUNITY / COLLABORATION / CONNECTION
                 </span>
-                <p>{settings.homepage?.communityIntro}</p>
+                <ul className="community-badges" aria-label="Community roles">
+                  {['Hackathon Organizer', 'Community Builder', 'Sponsorship Lead'].map(role => <li key={role}>{role}</li>)}
+                </ul>
                 <div className="community-actions">
-                  <Link href="/community" className="button">
+                  <MagneticLink href="/community" className="button">
                     Meet the community
                     <ArrowUpRight size={16} />
-                  </Link>
+                  </MagneticLink>
                   <Link href="/activities" className="text-link">
                     Activities
                     <ArrowUpRight size={16} />
@@ -395,33 +402,10 @@ export default async function Home() {
           </Reveal>
         </div>
       </section>
-      <section className="lab-section container episode-section" id="lab">
-        <Reveal>
-          <Episode number="06" title="EXPERIMENTS" japanese="探求" />
-          <div className="episode-heading">
-            <h2>
-              FOLLOW
-              <br />
-              <em>THE WHAT IF.</em>
-            </h2>
-            <div>
-              <p>
-                Three connected interests. Pick a channel and rearrange the
-                nodes to explore the connections.
-              </p>
-              <Link href="/writing" className="text-link">
-                Notes & explorations
-                <ArrowUpRight size={16} />
-              </Link>
-            </div>
-          </div>
-          <StudioVisual pillars={settings.homepage?.pillars || []} />
-        </Reveal>
-      </section>
       {events.filter((e) => e.featured).length > 0 && (
         <section className="events-sector container episode-section">
           <Reveal>
-            <Episode number="07" title="FIELD NOTES" japanese="記録" />
+            <Episode number="06" title="FIELD NOTES" japanese="記録" />
             <div className="episode-heading">
               <h2>
                 OUT IN
@@ -446,7 +430,7 @@ export default async function Home() {
         <Reveal>
           <div className="episode-label">
             <span>THE BUILD SEQUENCE / LEARNING IS A LOOP</span>
-            <Link href="/hackathons">HACKATHONS ↗</Link>
+            <Link href="/hackathons">HACKATHONS <ArrowUpRight size={14} aria-hidden="true" /></Link>
           </div>
           <Approach />
         </Reveal>

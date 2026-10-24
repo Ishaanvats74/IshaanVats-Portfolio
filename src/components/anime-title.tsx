@@ -42,14 +42,16 @@ export function AnimeTitle({ name }: { name: string }) {
   const parts = display.split(' ')
   const original = name.split(' ')
   return (
-    <h1 className="anime-title" aria-label={name}>
+    <h1 className="anime-title name-switch" aria-label={name} tabIndex={0}>
       <span aria-hidden="true">
         <span className="title-width">{original[0]}</span>
         <span className="title-glyphs">{parts[0]}</span>
+        <span className="title-katakana" lang="ja">イシャーン</span>
       </span>
       <span aria-hidden="true">
         <span className="title-width">{original.slice(1).join(' ')}</span>
         <span className="title-glyphs">{parts.slice(1).join(' ')}</span>
+        <span className="title-katakana" lang="ja">ヴァツ</span>
       </span>
       <i className="name-cut" aria-hidden="true" />
     </h1>
