@@ -1,4 +1,5 @@
 import 'server-only'
+import { defaultPresentation, type Presentation } from './presentation'
 import type { CollectionSlug } from 'payload'
 import { unstable_cache } from 'next/cache'
 import { initialSettings, type Entry, type Settings } from './content'
@@ -23,3 +24,17 @@ export const getEntries = unstable_cache(async (collection: string): Promise<Ent
   return result.docs as unknown as Entry[]
 }, ['entries'], { tags: ['portfolio'], revalidate: 3600 })
 export async function getEntry(collection: string, slug: string) { return (await getEntries(collection)).find(entry => entry.slug === slug) }
+
+export const getPresentation = unstable_cache(async (): Promise<Presentation> => {
+ if (!cmsConfigured) return defaultPresentation
+ const payload = await client()
+ const doc = await payload.findGlobal({slug:'presentation', depth:0, overrideAccess:false})
+ return {
+  copy: doc.copy ?? defaultPresentation.copy,
+  sections: doc.sections ?? defaultPresentation.sections,
+  originCards: doc.originCards ?? defaultPresentation.originCards,
+  communityTags: doc.communityTags ?? defaultPresentation.communityTags,
+  processSteps: doc.processSteps ?? defaultPresentation.processSteps,
+  categories: doc.categories ?? defaultPresentation.categories,
+ } as Presentation
+}, ['presentation'], {tags:['portfolio'], revalidate:3600})

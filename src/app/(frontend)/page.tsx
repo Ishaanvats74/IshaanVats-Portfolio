@@ -1,6 +1,11 @@
-import Link from 'next/link'
+import { copyReader } from '@/lib/presentation'
+import { CMSAnchor } from '@/components/presentation'
+import { HomeSections } from '@/components/presentation'
+import { SkillCard } from '@/components/skill-card'
+import { Copy } from '@/components/presentation'
+import { CMSLink as Link } from '@/components/presentation'
 import { ArrowDown, ArrowUpRight, Code2, GraduationCap, Users, MapPin } from 'lucide-react'
-import { getEntries, getSettings } from '@/lib/data'
+import { getEntries, getSettings, getPresentation } from '@/lib/data'
 import { AnimeBackground } from '@/components/anime-background'
 import { AnimeTitle } from '@/components/anime-title'
 import { OpeningSequence } from '@/components/opening-sequence'
@@ -8,7 +13,6 @@ import {
   Approach,
   MagneticLink,
   Reveal,
-  SkillEnergy,
 } from '@/components/experience'
 import {
   EventRow,
@@ -30,8 +34,7 @@ function Episode({
   return (
     <div className="episode-label">
       <span>
-        <i />
-        EPISODE {number}: {title}
+        <i /> <Copy id="app.frontend.page.tsx.1" /> {number}: {title}
       </span>
       <span lang="ja" aria-hidden="true">
         {japanese}
@@ -57,14 +60,17 @@ export default async function Home() {
     settings.socialLinks?.filter(
       (link) => link.label.toLowerCase() === 'github',
     ) || []
-  const groups = [...new Set(skills.map((skill) => skill.category || 'Other'))]
+  const presentation = await getPresentation()
+  const copy = copyReader(presentation)
+  const categoryOrder = presentation.categories.map(row => row.label)
+  const groups = [...new Set(skills.map(skill => skill.category || 'Other'))].sort((a,b) => { const rank=(v:string)=>{const i=categoryOrder.indexOf(v);return i<0?categoryOrder.length:i};return rank(a)-rank(b) })
   return (
-    <div className="crimson-home" id="top">
+    <HomeSections>
       <OpeningSequence name={settings.name} />
-      <section className="opening-hero" aria-label="Introduction">
+      <section id="hero" className="opening-hero" aria-label={copy('app.frontend.page.tsx.prop.1')}>
         <AnimeBackground />
         <div className="hero-topline container">
-          <span className="mono">AN ORIGINAL STORY / A PERSONAL PORTFOLIO</span>
+          <span className="mono"><Copy id="app.frontend.page.tsx.2" /></span>
           <span className="mono">
             <MapPin size={12} />
             {settings.location}
@@ -72,53 +78,41 @@ export default async function Home() {
         </div>
         <div className="hero-content container">
           <div className="hero-kicker">
-            <span />
-            CODE. CURIOSITY. CONVICTION.
-          </div>
+            <span /> <Copy id="app.frontend.page.tsx.3" /> </div>
           <AnimeTitle name={settings.name} />
           <div className="hero-description">
-            <h2>Full-Stack Developer &amp; AI Explorer building tools that connect people.</h2>
+            <h2><Copy id="app.frontend.page.tsx.4" /></h2>
           </div>
           <div className="hero-actions-new">
-            <MagneticLink href="#work" className="button">
-              Explore the work
-              <ArrowUpRight size={18} />
+            <MagneticLink href="#work" className="button"> <Copy id="app.frontend.page.tsx.5" /> <ArrowUpRight size={18} />
             </MagneticLink>
-            <a href="#contact" className="text-link">
-              Start a conversation
-              <ArrowUpRight size={16} />
-            </a>
+            <CMSAnchor href="#contact" className="text-link"> <Copy id="app.frontend.page.tsx.6" /> <ArrowUpRight size={16} />
+            </CMSAnchor>
           </div>
         </div>
         <div className="hero-ending container">
           <span className="mono">{settings.homepage?.eyebrow}</span>
-          <a href="#profile" className="scroll-prompt">
-            <span>THE STORY CONTINUES</span>
+          <CMSAnchor href="#profile" className="scroll-prompt">
+            <span><Copy id="app.frontend.page.tsx.7" /></span>
             <ArrowDown size={16} />
-          </a>
-          <span className="hero-japanese" lang="ja" aria-hidden="true">
-            ポートフォリオ
-          </span>
+          </CMSAnchor>
+          <span className="hero-japanese" lang="ja" aria-hidden="true"> <Copy id="app.frontend.page.tsx.8" /> </span>
         </div>
       </section>
-      <div className="chapter-navigation">
+      <div id="chapters" className="chapter-navigation">
         <div className="container">
-          <a href="#profile">
-            <span>01</span>ORIGIN
-            <ArrowUpRight size={14} />
-          </a>
-          <a href="#arsenal">
-            <span>02</span>ARSENAL
-            <ArrowUpRight size={14} />
-          </a>
-          <a href="#work">
-            <span>03</span>MISSIONS
-            <ArrowUpRight size={14} />
-          </a>
-          <a href="#contact">
-            <span>→</span>NEXT CHAPTER
-            <ArrowUpRight size={14} />
-          </a>
+          <CMSAnchor href="#profile">
+            <span>01</span><Copy id="app.frontend.page.tsx.9" /> <ArrowUpRight size={14} />
+          </CMSAnchor>
+          <CMSAnchor href="#arsenal">
+            <span>02</span><Copy id="app.frontend.page.tsx.10" /> <ArrowUpRight size={14} />
+          </CMSAnchor>
+          <CMSAnchor href="#work">
+            <span>03</span><Copy id="app.frontend.page.tsx.11" /> <ArrowUpRight size={14} />
+          </CMSAnchor>
+          <CMSAnchor href="#contact">
+            <span>→</span><Copy id="app.frontend.page.tsx.12" /> <ArrowUpRight size={14} />
+          </CMSAnchor>
         </div>
       </div>
       <section
@@ -126,7 +120,7 @@ export default async function Home() {
         id="profile"
       >
         <Reveal>
-          <Episode number="01" title="ORIGIN" japanese="始まり" />
+          <Episode number="01" title={copy('app.frontend.page.tsx.prop.2')} japanese={copy('app.frontend.page.tsx.prop.3')} />
           <div className="origin-grid">
             <div className="origin-visual">
               {settings.portrait?.url ? (
@@ -136,38 +130,31 @@ export default async function Home() {
                 />
               ) : (
                 <div className="origin-monogram" aria-hidden="true">
-                  <span>IV</span>
+                  <span><Copy id="app.frontend.page.tsx.13" /></span>
                   <i />
-                  <b lang="ja">好奇心</b>
+                  <b lang="ja"><Copy id="app.frontend.page.tsx.14" /></b>
                 </div>
               )}
               <div className="origin-caption">
-                <span>{settings.name} / THE HUMAN BEHIND THE CODE</span>
+                <span>{settings.name} <Copy id="app.frontend.page.tsx.15" /></span>
                 <Code2 size={20} />
               </div>
             </div>
             <div className="origin-copy">
-              <span className="eyebrow">EVERY STORY STARTS SOMEWHERE.</span>
-              <h2>
-                A CURIOUS MIND.
-                <br />
-                <em>AN UNFINISHED STORY.</em>
+              <span className="eyebrow"><Copy id="app.frontend.page.tsx.16" /></span>
+              <h2> <Copy id="app.frontend.page.tsx.17" /> <br />
+                <em><Copy id="app.frontend.page.tsx.18" /></em>
               </h2>
               <div className="origin-facts">
-                {[
-                  { Icon: GraduationCap, label: 'Education', value: 'B.Sc. (Hons) CS @ SSCBS, University of Delhi' },
-                  { Icon: Code2, label: 'Focus', value: 'Full-Stack Systems & AI Engineering' },
-                  { Icon: Users, label: 'Community', value: 'Tech & Event Lead @ Geek Room' },
-                ].map(({ Icon, label, value }, index) => (
-                  <Reveal className="origin-fact" key={label} delay={index * 0.09}>
+                {presentation.originCards.map((card, index) => {
+                  const Icon = { education: GraduationCap, code: Code2, users: Users }[card.icon] || Code2
+                  return <Reveal className="origin-fact" key={index} delay={Math.min(index,5) * 0.09}>
                     <Icon size={22} strokeWidth={1.5} aria-hidden="true" />
-                    <div><h3>{label}</h3><p>{value}</p></div>
+                    <div><h3>{card.title}</h3><p>{card.description}</p></div>
                   </Reveal>
-                ))}
+                })}
               </div>
-              <Link href="/about" className="text-link">
-                Read my story
-                <ArrowUpRight size={17} />
+              <Link href="/about" className="text-link"> <Copy id="app.frontend.page.tsx.19" /> <ArrowUpRight size={17} />
               </Link>
             </div>
           </div>
@@ -176,29 +163,22 @@ export default async function Home() {
       <section className="arsenal-section episode-section" id="arsenal">
         <div className="container">
           <Reveal>
-            <Episode number="02" title="ARSENAL" japanese="技術" />
+            <Episode number="02" title={copy('app.frontend.page.tsx.prop.4')} japanese={copy('app.frontend.page.tsx.prop.5')} />
             <div className="episode-heading">
-              <h2>
-                TOOLS OF
-                <br />
-                <em>THE TRADE.</em>
+              <h2> <Copy id="app.frontend.page.tsx.20" /> <br />
+                <em><Copy id="app.frontend.page.tsx.21" /></em>
               </h2>
               <div>
-                <p>
-                  Full-stack development, intelligent systems, and developer
-                  tools. The toolkit grows with the idea.
-                </p>
-                <Link href="/experience" className="text-link">
-                  Explore experience
-                  <ArrowUpRight size={16} />
+                <p> <Copy id="app.frontend.page.tsx.22" /> </p>
+                <Link href="/experience" className="text-link"> <Copy id="app.frontend.page.tsx.23" /> <ArrowUpRight size={16} />
                 </Link>
               </div>
             </div>
             {skills.length ? (
               <div className="arsenal-sheet">
                 <div className="sheet-header">
-                  <span>TECHNOLOGY LOADOUT</span>
-                  <span>{skills.length} PUBLISHED ENTRIES</span>
+                  <span><Copy id="app.frontend.page.tsx.24" /></span>
+                  <span>{skills.length} <Copy id="app.frontend.page.tsx.25" /></span>
                 </div>
                 <div className="skill-groups">
                   {groups.map((category) => (
@@ -208,29 +188,11 @@ export default async function Home() {
                         .filter(
                           (skill) => (skill.category || 'Other') === category,
                         )
-                        .map((skill) => (
-                          <Reveal key={skill.id} className="skill-row">
-                            <div className="skill-name">
-                              <span className="skill-badge" aria-hidden="true">
-                                +
-                              </span>
-                              <strong>{skill.title}</strong>
-                              {skill.website && (
-                                <ExternalLink href={skill.website}>
-                                  Website
-                                </ExternalLink>
-                              )}
-                            </div>
-                            <SkillEnergy />
-                          </Reveal>
-                        ))}
+                        .map((skill,index) => <SkillCard key={skill.id} entry={skill} index={index} />)}
                     </div>
                   ))}
                 </div>
-                <p className="sheet-note">
-                  Published toolkit entries. Decorative energy bars are not
-                  proficiency scores.
-                </p>
+                <p className="sheet-note"> <Copy id="app.frontend.page.tsx.27" /> </p>
               </div>
             ) : (
               <div className="arsenal-empty">
@@ -238,15 +200,11 @@ export default async function Home() {
                   ⌘
                 </div>
                 <div>
-                  <span className="eyebrow">THE LOADOUT IS EVOLVING</span>
-                  <h3>New tools. New possibilities.</h3>
-                  <p>
-                    My technology inventory will appear here as it’s published.
-                  </p>
+                  <span className="eyebrow"><Copy id="app.frontend.page.tsx.28" /></span>
+                  <h3><Copy id="app.frontend.page.tsx.29" /></h3>
+                  <p> <Copy id="app.frontend.page.tsx.30" /> </p>
                 </div>
-                <span className="loadout-stamp" lang="ja" aria-hidden="true">
-                  進化
-                </span>
+                <span className="loadout-stamp" lang="ja" aria-hidden="true"> <Copy id="app.frontend.page.tsx.31" /> </span>
               </div>
             )}
           </Reveal>
@@ -254,20 +212,14 @@ export default async function Home() {
       </section>
       <section className="missions-section container episode-section" id="work">
         <Reveal>
-          <Episode number="03" title="MISSIONS" japanese="制作" />
+          <Episode number="03" title={copy('app.frontend.page.tsx.prop.6')} japanese={copy('app.frontend.page.tsx.prop.7')} />
           <div className="episode-heading">
-            <h2>
-              IDEAS INTO
-              <br />
-              <em>REALITY.</em>
+            <h2> <Copy id="app.frontend.page.tsx.32" /> <br />
+              <em><Copy id="app.frontend.page.tsx.33" /></em>
             </h2>
             <div>
-              <p>
-                Applications, experiments, and the thinking behind the code.
-              </p>
-              <Link href="/projects" className="text-link">
-                All projects
-                <ArrowUpRight size={16} />
+              <p> <Copy id="app.frontend.page.tsx.34" /> </p>
+              <Link href="/projects" className="text-link"> <Copy id="app.frontend.page.tsx.35" /> <ArrowUpRight size={16} />
               </Link>
             </div>
           </div>
@@ -286,32 +238,19 @@ export default async function Home() {
               <div className="mission-illustration" aria-hidden="true">
                 <span className="mission-number">01</span>
                 <span className="mission-slash" />
-                <span className="mission-sfx" lang="ja">
-                  ドン!
-                </span>
-                <span className="mono">TO BE CONTINUED.</span>
+                <span className="mission-sfx" lang="ja"> <Copy id="app.frontend.page.tsx.36" /> </span>
+                <span className="mono"><Copy id="app.frontend.page.tsx.37" /></span>
               </div>
               <div className="empty-mission-copy">
-                <span className="eyebrow">
-                  THE NEXT MISSION IS TAKING SHAPE
-                </span>
-                <h3>
-                  EVERY BUILD
-                  <br />
-                  STARTS WITH AN IDEA.
-                </h3>
-                <p>
-                  Case studies will appear here as they’re published. Explore my
-                  code on GitHub in the meantime.
-                </p>
+                <span className="eyebrow"> <Copy id="app.frontend.page.tsx.38" /> </span>
+                <h3> <Copy id="app.frontend.page.tsx.39" /> <br /> <Copy id="app.frontend.page.tsx.40" /> </h3>
+                <p> <Copy id="app.frontend.page.tsx.41" /> </p>
                 {github.map((link) => (
                   <ExternalLink
                     key={link.url}
                     href={link.url}
                     className="text-link"
-                  >
-                    Explore GitHub
-                  </ExternalLink>
+                  > <Copy id="app.frontend.page.tsx.42" /> </ExternalLink>
                 ))}
               </div>
             </div>
@@ -324,16 +263,12 @@ export default async function Home() {
           id="journey"
         >
           <Reveal>
-            <Episode number="04" title="THE JOURNEY" japanese="経験" />
+            <Episode number="04" title={copy('app.frontend.page.tsx.prop.8')} japanese={copy('app.frontend.page.tsx.prop.9')} />
             <div className="episode-heading">
-              <h2>
-                LEARNING
-                <br />
-                <em>BY DOING.</em>
+              <h2> <Copy id="app.frontend.page.tsx.43" /> <br />
+                <em><Copy id="app.frontend.page.tsx.44" /></em>
               </h2>
-              <Link href="/experience" className="text-link">
-                Full timeline
-                <ArrowUpRight size={16} />
+              <Link href="/experience" className="text-link"> <Copy id="app.frontend.page.tsx.45" /> <ArrowUpRight size={16} />
               </Link>
             </div>
             <div className="timeline">
@@ -347,7 +282,7 @@ export default async function Home() {
                     <div className="timeline-date">
                       {dateLabel(entry.startDate)}
                       {entry.startDate &&
-                        ` — ${entry.endDate ? dateLabel(entry.endDate) : 'Present'}`}
+                        ` — ${entry.endDate ? dateLabel(entry.endDate) : copy('present')}`}
                     </div>
                     <div>
                       <span className="eyebrow">
@@ -365,14 +300,11 @@ export default async function Home() {
       <section className="community-sector episode-section" id="community">
         <div className="container">
           <Reveal>
-            <Episode number="05" title="ALLIES" japanese="仲間" />
+            <Episode number="05" title={copy('app.frontend.page.tsx.prop.10')} japanese={copy('app.frontend.page.tsx.prop.11')} />
             <div className="community-grid">
               <div>
-                <span className="eyebrow">BEYOND THE KEYBOARD</span>
-                <h2>
-                  NO GREAT STORY
-                  <br />
-                  IS BUILT <em>ALONE.</em>
+                <span className="eyebrow"><Copy id="app.frontend.page.tsx.46" /></span>
+                <h2> <Copy id="app.frontend.page.tsx.47" /> <br /> <Copy id="app.frontend.page.tsx.48" /> <em><Copy id="app.frontend.page.tsx.49" /></em>
                 </h2>
                 <div className="allies-mark" aria-hidden="true">
                   <i />
@@ -381,20 +313,14 @@ export default async function Home() {
                 </div>
               </div>
               <div className="community-message">
-                <span className="message-tag">
-                  COMMUNITY / COLLABORATION / CONNECTION
-                </span>
-                <ul className="community-badges" aria-label="Community roles">
-                  {['Hackathon Organizer', 'Community Builder', 'Sponsorship Lead'].map(role => <li key={role}>{role}</li>)}
+                <span className="message-tag"> <Copy id="app.frontend.page.tsx.50" /> </span>
+                <ul className="community-badges" aria-label={copy('app.frontend.page.tsx.prop.12')}>
+                  {presentation.communityTags.map((tag,index) => <li key={index}>{tag.label}</li>)}
                 </ul>
                 <div className="community-actions">
-                  <MagneticLink href="/community" className="button">
-                    Meet the community
-                    <ArrowUpRight size={16} />
+                  <MagneticLink href="/community" className="button"> <Copy id="app.frontend.page.tsx.51" /> <ArrowUpRight size={16} />
                   </MagneticLink>
-                  <Link href="/activities" className="text-link">
-                    Activities
-                    <ArrowUpRight size={16} />
+                  <Link href="/activities" className="text-link"> <Copy id="app.frontend.page.tsx.52" /> <ArrowUpRight size={16} />
                   </Link>
                 </div>
               </div>
@@ -403,18 +329,14 @@ export default async function Home() {
         </div>
       </section>
       {events.filter((e) => e.featured).length > 0 && (
-        <section className="events-sector container episode-section">
+        <section id="events" className="events-sector container episode-section">
           <Reveal>
-            <Episode number="06" title="FIELD NOTES" japanese="記録" />
+            <Episode number="06" title={copy('app.frontend.page.tsx.prop.13')} japanese={copy('app.frontend.page.tsx.prop.14')} />
             <div className="episode-heading">
-              <h2>
-                OUT IN
-                <br />
-                <em>THE WORLD.</em>
+              <h2> <Copy id="app.frontend.page.tsx.53" /> <br />
+                <em><Copy id="app.frontend.page.tsx.54" /></em>
               </h2>
-              <Link href="/events" className="text-link">
-                All events
-                <ArrowUpRight size={16} />
+              <Link href="/events" className="text-link"> <Copy id="app.frontend.page.tsx.55" /> <ArrowUpRight size={16} />
               </Link>
             </div>
             {events
@@ -426,15 +348,15 @@ export default async function Home() {
           </Reveal>
         </section>
       )}
-      <section className="process-sector container episode-section">
+      <section id="process" className="process-sector container episode-section">
         <Reveal>
           <div className="episode-label">
-            <span>THE BUILD SEQUENCE / LEARNING IS A LOOP</span>
-            <Link href="/hackathons">HACKATHONS <ArrowUpRight size={14} aria-hidden="true" /></Link>
+            <span><Copy id="app.frontend.page.tsx.56" /></span>
+            <Link href="/hackathons"><Copy id="app.frontend.page.tsx.57" /> <ArrowUpRight size={14} aria-hidden="true" /></Link>
           </div>
           <Approach />
         </Reveal>
       </section>
-    </div>
+    </HomeSections>
   )
 }

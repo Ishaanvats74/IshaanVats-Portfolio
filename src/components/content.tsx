@@ -1,6 +1,10 @@
-import Link from 'next/link'
+'use client'
+import { useCopy } from './presentation'
+import { Copy } from '@/components/presentation'
+import { CMSLink as Link } from '@/components/presentation'
 import { MagneticLink, ProjectSurface } from './experience'
 import Image from 'next/image'
+import { mediaSource } from '@/lib/media'
 import { ArrowDown, ArrowUpRight, MoveUpRight } from 'lucide-react'
 import { RichText } from '@payloadcms/richtext-lexical/react'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
@@ -13,15 +17,16 @@ export function PageHeading({ eyebrow, title, description }: { eyebrow: string; 
 export function MediaImage({ media, priority = false, className = '' }: { media?: Media; priority?: boolean; className?: string }) {
   if (!media?.url) return null
   const origin = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-  const src = media.url.startsWith(`${origin}/`) ? media.url.slice(origin.length) : media.url
+  const src = mediaSource(media.url,origin)
+  if (!src) return null
   return <div className={`media-image ${className}`}><Image src={src} alt={media.alt || ''} fill sizes="(max-width: 700px) 100vw, 55vw" priority={priority} style={{ objectFit: 'cover' }} /></div>
 }
 export function ExternalLink({ href, children, className }: { href?: string; children: React.ReactNode; className?: string }) {
   const url = safeURL(href)
   return url ? <MagneticLink href={url} external className={className}>{children}<ArrowUpRight size={16} /></MagneticLink> : null
 }
-export function ProjectLinks({ entry }: { entry: Entry }) { return <div className="link-group">{projectLinks(entry).map(link => <ExternalLink key={link.href} href={link.href} className="button">{link.label}</ExternalLink>)}</div> }
-export function EmptyState({ kind }: { kind: string }) { return <div className="empty-state"><span className="empty-symbol"><ArrowUpRight size={36} aria-hidden="true" /></span><div><h3>A little more to come.</h3><p>{kind} will appear here as they’re published.</p></div><span className="mono">STAY CURIOUS</span></div> }
+export function ProjectLinks({ entry }: { entry: Entry }) { const copy=useCopy(); return <div className="link-group">{projectLinks(entry).map(link => <ExternalLink key={link.href} href={link.href} className="button">{copy(link.label === 'View Live Project' ? 'projects.live' : link.label === 'GitHub Repository' ? 'projects.github' : 'projects.githubOnly')}</ExternalLink>)}</div> }
+export function EmptyState({ kind: _kind }: { kind: string }) { const copy=useCopy(); return <div className="empty-state"><span className="empty-symbol"><ArrowUpRight size={36} aria-hidden="true" /></span><div><h3><Copy id="components.content.tsx.1" /></h3><p>{copy('empty.description')}</p></div><span className="mono"><Copy id="components.content.tsx.3" /></span></div> }
 export function ProjectCard({ entry, index }: { entry: Entry; index: number }) { return <ProjectSurface media={
   <Link href={`/projects/${entry.slug}`} data-cursor="VIEW PROJECT" className="project-image-link">
     {entry.coverImage?.url ? <MediaImage media={entry.coverImage} /> : <div className="project-fallback"><span>{String(index + 1).padStart(2, '0')}</span><MoveUpRight size={70} strokeWidth={1} /></div>}

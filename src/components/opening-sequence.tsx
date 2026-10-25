@@ -1,4 +1,5 @@
 'use client'
+import { Copy } from '@/components/presentation'
 import { useEffect, useState } from 'react'
 
 /** A non-blocking title sting, never a simulated loading gate. */
@@ -12,15 +13,15 @@ export function OpeningSequence({ name }: { name: string }) {
     } catch {
       return
     }
-    setVisible(true)
+    const frame = requestAnimationFrame(() => setVisible(true))
     const timer = setTimeout(() => setVisible(false), 1700)
-    return () => clearTimeout(timer)
+    return () => { cancelAnimationFrame(frame); clearTimeout(timer) }
   }, [])
   return visible ? (
     <div className="opening-sting" aria-hidden="true">
-      <span>PROLOGUE / {name.toUpperCase()}</span>
+      <span><Copy id="components.opening.sequence.tsx.1" /> {name.toUpperCase()}</span>
       <i />
-      <span>THE STORY BEGINS.</span>
+      <span><Copy id="components.opening.sequence.tsx.2" /></span>
     </div>
   ) : null
 }

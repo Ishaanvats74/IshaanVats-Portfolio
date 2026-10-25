@@ -1,0 +1,1286 @@
+[
+  {
+    "key": "components.anime.background.tsx.1",
+    "label": "創造",
+    "value": "創造",
+    "source": "src/components/anime-background.tsx"
+  },
+  {
+    "key": "components.anime.background.tsx.2",
+    "label": "THE NEXT CHAPTER IS YOURS TO BUILD.",
+    "value": "THE NEXT CHAPTER IS YOURS TO BUILD.",
+    "source": "src/components/anime-background.tsx"
+  },
+  {
+    "key": "components.anime.title.tsx.1",
+    "label": "イシャーン",
+    "value": "イシャーン",
+    "source": "src/components/anime-title.tsx"
+  },
+  {
+    "key": "components.anime.title.tsx.2",
+    "label": "ヴァツ",
+    "value": "ヴァツ",
+    "source": "src/components/anime-title.tsx"
+  },
+  {
+    "key": "components.archive.tsx.1",
+    "label": "Year",
+    "value": "Year",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "components.archive.tsx.2",
+    "label": "All years",
+    "value": "All years",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "components.archive.tsx.3",
+    "label": "Role",
+    "value": "Role",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "components.archive.tsx.4",
+    "label": "All roles",
+    "value": "All roles",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "components.archive.tsx.5",
+    "label": "No entries match these filters. Try another selection.",
+    "value": "No entries match these filters. Try another selection.",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "components.content.tsx.1",
+    "label": "A little more to come.",
+    "value": "A little more to come.",
+    "source": "src/components/content.tsx"
+  },
+  {
+    "key": "components.content.tsx.2",
+    "label": "will appear here as they’re published.",
+    "value": "will appear here as they’re published.",
+    "source": "src/components/content.tsx"
+  },
+  {
+    "key": "components.content.tsx.3",
+    "label": "STAY CURIOUS",
+    "value": "STAY CURIOUS",
+    "source": "src/components/content.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.1",
+    "label": "IV",
+    "value": "IV",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.2",
+    "label": "イシャーン・ヴァツ",
+    "value": "イシャーン・ヴァツ",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.3",
+    "label": "PERSONAL PORTFOLIO",
+    "value": "PERSONAL PORTFOLIO",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.4",
+    "label": "Résumé",
+    "value": "Résumé",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "components.opening.sequence.tsx.1",
+    "label": "PROLOGUE /",
+    "value": "PROLOGUE /",
+    "source": "src/components/opening-sequence.tsx"
+  },
+  {
+    "key": "components.opening.sequence.tsx.2",
+    "label": "THE STORY BEGINS.",
+    "value": "THE STORY BEGINS.",
+    "source": "src/components/opening-sequence.tsx"
+  },
+  {
+    "key": "app.frontend.error.tsx.1",
+    "label": "A BRIEF INTERRUPTION",
+    "value": "A BRIEF INTERRUPTION",
+    "source": "src/app/(frontend)/error.tsx"
+  },
+  {
+    "key": "app.frontend.error.tsx.2",
+    "label": "Let’s try again.",
+    "value": "Let’s try again.",
+    "source": "src/app/(frontend)/error.tsx"
+  },
+  {
+    "key": "app.frontend.error.tsx.3",
+    "label": "This page couldn’t load. Please try again in a moment.",
+    "value": "This page couldn’t load. Please try again in a moment.",
+    "source": "src/app/(frontend)/error.tsx"
+  },
+  {
+    "key": "app.frontend.error.tsx.4",
+    "label": "Try again",
+    "value": "Try again",
+    "source": "src/app/(frontend)/error.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.1",
+    "label": "Skip to content",
+    "value": "Skip to content",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.2",
+    "label": "NEXT EPISODE PREVIEW / CONTACT",
+    "value": "NEXT EPISODE PREVIEW / CONTACT",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.3",
+    "label": "連絡",
+    "value": "連絡",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.4",
+    "label": "HAVE AN IDEA, A QUESTION, OR A SHARED CURIOSITY?",
+    "value": "HAVE AN IDEA, A QUESTION, OR A SHARED CURIOSITY?",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.5",
+    "label": "LET’S BUILD",
+    "value": "LET’S BUILD",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.6",
+    "label": "THE NEXT CHAPTER.",
+    "value": "THE NEXT CHAPTER.",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.7",
+    "label": "Résumé",
+    "value": "Résumé",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.8",
+    "label": "BACK TO TOP ↑",
+    "value": "BACK TO TOP ↑",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.layout.tsx.9",
+    "label": "LOCAL PREVIEW · Connect Payload to publish your content",
+    "value": "LOCAL PREVIEW · Connect Payload to publish your content",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.loading.tsx.1",
+    "label": "LOADING THE NEXT CHAPTER…",
+    "value": "LOADING THE NEXT CHAPTER…",
+    "source": "src/app/(frontend)/loading.tsx"
+  },
+  {
+    "key": "app.frontend.not.found.tsx.1",
+    "label": "404 / OFF THE MAP",
+    "value": "404 / OFF THE MAP",
+    "source": "src/app/(frontend)/not-found.tsx"
+  },
+  {
+    "key": "app.frontend.not.found.tsx.2",
+    "label": "A different path",
+    "value": "A different path",
+    "source": "src/app/(frontend)/not-found.tsx"
+  },
+  {
+    "key": "app.frontend.not.found.tsx.3",
+    "label": "This page may have moved or hasn’t been published yet.",
+    "value": "This page may have moved or hasn’t been published yet.",
+    "source": "src/app/(frontend)/not-found.tsx"
+  },
+  {
+    "key": "app.frontend.not.found.tsx.4",
+    "label": "Back home",
+    "value": "Back home",
+    "source": "src/app/(frontend)/not-found.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.1",
+    "label": "EPISODE",
+    "value": "EPISODE",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.2",
+    "label": "AN ORIGINAL STORY / A PERSONAL PORTFOLIO",
+    "value": "AN ORIGINAL STORY / A PERSONAL PORTFOLIO",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.3",
+    "label": "CODE. CURIOSITY. CONVICTION.",
+    "value": "CODE. CURIOSITY. CONVICTION.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.4",
+    "label": "Full-Stack Developer & AI Explorer building tools that connect people.",
+    "value": "Full-Stack Developer & AI Explorer building tools that connect people.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.5",
+    "label": "Explore the work",
+    "value": "Explore the work",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.6",
+    "label": "Start a conversation",
+    "value": "Start a conversation",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.7",
+    "label": "THE STORY CONTINUES",
+    "value": "THE STORY CONTINUES",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.8",
+    "label": "ポートフォリオ",
+    "value": "ポートフォリオ",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.9",
+    "label": "ORIGIN",
+    "value": "ORIGIN",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.10",
+    "label": "ARSENAL",
+    "value": "ARSENAL",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.11",
+    "label": "MISSIONS",
+    "value": "MISSIONS",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.12",
+    "label": "NEXT CHAPTER",
+    "value": "NEXT CHAPTER",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.13",
+    "label": "IV",
+    "value": "IV",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.14",
+    "label": "好奇心",
+    "value": "好奇心",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.15",
+    "label": "/ THE HUMAN BEHIND THE CODE",
+    "value": "/ THE HUMAN BEHIND THE CODE",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.16",
+    "label": "EVERY STORY STARTS SOMEWHERE.",
+    "value": "EVERY STORY STARTS SOMEWHERE.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.17",
+    "label": "A CURIOUS MIND.",
+    "value": "A CURIOUS MIND.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.18",
+    "label": "AN UNFINISHED STORY.",
+    "value": "AN UNFINISHED STORY.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.19",
+    "label": "Read my story",
+    "value": "Read my story",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.20",
+    "label": "TOOLS OF",
+    "value": "TOOLS OF",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.21",
+    "label": "THE TRADE.",
+    "value": "THE TRADE.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.22",
+    "label": "Full-stack development, intelligent systems, and developer tools. The ",
+    "value": "Full-stack development, intelligent systems, and developer tools. The toolkit grows with the idea.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.23",
+    "label": "Explore experience",
+    "value": "Explore experience",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.24",
+    "label": "TECHNOLOGY LOADOUT",
+    "value": "TECHNOLOGY LOADOUT",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.25",
+    "label": "PUBLISHED ENTRIES",
+    "value": "PUBLISHED ENTRIES",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.26",
+    "label": "Website",
+    "value": "Website",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.27",
+    "label": "Published toolkit entries. Decorative energy bars are not proficiency ",
+    "value": "Published toolkit entries. Decorative energy bars are not proficiency scores.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.28",
+    "label": "THE LOADOUT IS EVOLVING",
+    "value": "THE LOADOUT IS EVOLVING",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.29",
+    "label": "New tools. New possibilities.",
+    "value": "New tools. New possibilities.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.30",
+    "label": "My technology inventory will appear here as it’s published.",
+    "value": "My technology inventory will appear here as it’s published.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.31",
+    "label": "進化",
+    "value": "進化",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.32",
+    "label": "IDEAS INTO",
+    "value": "IDEAS INTO",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.33",
+    "label": "REALITY.",
+    "value": "REALITY.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.34",
+    "label": "Applications, experiments, and the thinking behind the code.",
+    "value": "Applications, experiments, and the thinking behind the code.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.35",
+    "label": "All projects",
+    "value": "All projects",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.36",
+    "label": "ドン!",
+    "value": "ドン!",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.37",
+    "label": "TO BE CONTINUED.",
+    "value": "TO BE CONTINUED.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.38",
+    "label": "THE NEXT MISSION IS TAKING SHAPE",
+    "value": "THE NEXT MISSION IS TAKING SHAPE",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.39",
+    "label": "EVERY BUILD",
+    "value": "EVERY BUILD",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.40",
+    "label": "STARTS WITH AN IDEA.",
+    "value": "STARTS WITH AN IDEA.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.41",
+    "label": "Case studies will appear here as they’re published. Explore my code on",
+    "value": "Case studies will appear here as they’re published. Explore my code on GitHub in the meantime.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.42",
+    "label": "Explore GitHub",
+    "value": "Explore GitHub",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.43",
+    "label": "LEARNING",
+    "value": "LEARNING",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.44",
+    "label": "BY DOING.",
+    "value": "BY DOING.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.45",
+    "label": "Full timeline",
+    "value": "Full timeline",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.46",
+    "label": "BEYOND THE KEYBOARD",
+    "value": "BEYOND THE KEYBOARD",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.47",
+    "label": "NO GREAT STORY",
+    "value": "NO GREAT STORY",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.48",
+    "label": "IS BUILT",
+    "value": "IS BUILT",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.49",
+    "label": "ALONE.",
+    "value": "ALONE.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.50",
+    "label": "COMMUNITY / COLLABORATION / CONNECTION",
+    "value": "COMMUNITY / COLLABORATION / CONNECTION",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.51",
+    "label": "Meet the community",
+    "value": "Meet the community",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.52",
+    "label": "Activities",
+    "value": "Activities",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.53",
+    "label": "OUT IN",
+    "value": "OUT IN",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.54",
+    "label": "THE WORLD.",
+    "value": "THE WORLD.",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.55",
+    "label": "All events",
+    "value": "All events",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.56",
+    "label": "THE BUILD SEQUENCE / LEARNING IS A LOOP",
+    "value": "THE BUILD SEQUENCE / LEARNING IS A LOOP",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.57",
+    "label": "HACKATHONS",
+    "value": "HACKATHONS",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.1",
+    "label": "iv",
+    "value": "iv",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.2",
+    "label": "HELLO, I’M ISHAAN",
+    "value": "HELLO, I’M ISHAAN",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.3",
+    "label": "Where curiosity goes next.",
+    "value": "Where curiosity goes next.",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.4",
+    "label": "Explore the work, the community, and the experiences behind it.",
+    "value": "Explore the work, the community, and the experiences behind it.",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.5",
+    "label": "Explore projects",
+    "value": "Explore projects",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.6",
+    "label": "Good things start",
+    "value": "Good things start",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.7",
+    "label": "with people.",
+    "value": "with people.",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.8",
+    "label": "Source",
+    "value": "Source",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.9",
+    "label": "Events",
+    "value": "Events",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.10",
+    "label": "Hackathons",
+    "value": "Hackathons",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.11",
+    "label": "All activities",
+    "value": "All activities",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.12",
+    "label": "UPDATED",
+    "value": "UPDATED",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.13",
+    "label": "Download PDF",
+    "value": "Download PDF",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.14",
+    "label": "Open in new tab",
+    "value": "Open in new tab",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.15",
+    "label": "If the embedded preview is unavailable, open the PDF in a new tab.",
+    "value": "If the embedded preview is unavailable, open the PDF in a new tab.",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.1",
+    "label": "← BACK TO",
+    "value": "← BACK TO",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.2",
+    "label": "Event website",
+    "value": "Event website",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.3",
+    "label": "TECHNOLOGIES",
+    "value": "TECHNOLOGIES",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.4",
+    "label": "TEAM",
+    "value": "TEAM",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.5",
+    "label": "Overview",
+    "value": "Overview",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.6",
+    "label": "Responsibilities",
+    "value": "Responsibilities",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.7",
+    "label": "Achievement",
+    "value": "Achievement",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "components.archive.tsx.prop.1",
+    "label": "Category filters",
+    "value": "Category filters",
+    "source": "src/components/archive.tsx"
+  },
+  {
+    "key": "link./",
+    "label": "Link: /",
+    "value": "/",
+    "source": "src/app/(frontend)/not-found.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.prop.1",
+    "label": "Main navigation",
+    "value": "Main navigation",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "link./resume",
+    "label": "Link: /resume",
+    "value": "/resume",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "components.navigation.tsx.prop.2",
+    "label": "Mobile navigation",
+    "value": "Mobile navigation",
+    "source": "src/components/navigation.tsx"
+  },
+  {
+    "key": "link.#main",
+    "label": "Link: #main",
+    "value": "#main",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "link.#top",
+    "label": "Link: #top",
+    "value": "#top",
+    "source": "src/app/(frontend)/layout.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.1",
+    "label": "Introduction",
+    "value": "Introduction",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link.#work",
+    "label": "Link: #work",
+    "value": "#work",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link.#contact",
+    "label": "Link: #contact",
+    "value": "#contact",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link.#profile",
+    "label": "Link: #profile",
+    "value": "#profile",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link.#arsenal",
+    "label": "Link: #arsenal",
+    "value": "#arsenal",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.2",
+    "label": "ORIGIN",
+    "value": "ORIGIN",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.3",
+    "label": "始まり",
+    "value": "始まり",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./about",
+    "label": "Link: /about",
+    "value": "/about",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.4",
+    "label": "ARSENAL",
+    "value": "ARSENAL",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.5",
+    "label": "技術",
+    "value": "技術",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./experience",
+    "label": "Link: /experience",
+    "value": "/experience",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.6",
+    "label": "MISSIONS",
+    "value": "MISSIONS",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.7",
+    "label": "制作",
+    "value": "制作",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./projects",
+    "label": "Link: /projects",
+    "value": "/projects",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.8",
+    "label": "THE JOURNEY",
+    "value": "THE JOURNEY",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.9",
+    "label": "経験",
+    "value": "経験",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.10",
+    "label": "ALLIES",
+    "value": "ALLIES",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.11",
+    "label": "仲間",
+    "value": "仲間",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.12",
+    "label": "Community roles",
+    "value": "Community roles",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./community",
+    "label": "Link: /community",
+    "value": "/community",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./activities",
+    "label": "Link: /activities",
+    "value": "/activities",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.13",
+    "label": "FIELD NOTES",
+    "value": "FIELD NOTES",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "app.frontend.page.tsx.prop.14",
+    "label": "記録",
+    "value": "記録",
+    "source": "src/app/(frontend)/page.tsx"
+  },
+  {
+    "key": "link./events",
+    "label": "Link: /events",
+    "value": "/events",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "link./hackathons",
+    "label": "Link: /hackathons",
+    "value": "/hackathons",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.1",
+    "label": "activities",
+    "value": "activities",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.2",
+    "label": "Related events",
+    "value": "Related events",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.3",
+    "label": "Related work",
+    "value": "Related work",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.4",
+    "label": "Related work",
+    "value": "Related work",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.5",
+    "label": "Related events",
+    "value": "Related events",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.6",
+    "label": "Experience entries",
+    "value": "Experience entries",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.page.tsx.prop.7",
+    "label": "The resume PDF",
+    "value": "The resume PDF",
+    "source": "src/app/(frontend)/[section]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.prop.1",
+    "label": "Related projects",
+    "value": "Related projects",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.prop.2",
+    "label": "Related events",
+    "value": "Related events",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "app.frontend.section.slug.page.tsx.prop.3",
+    "label": "Related hackathons",
+    "value": "Related hackathons",
+    "source": "src/app/(frontend)/[section]\\[slug]\\page.tsx"
+  },
+  {
+    "key": "route.projects.eyebrow",
+    "label": "projects: eyebrow",
+    "value": "THE WORK / AN EVOLVING COLLECTION",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.projects.title",
+    "label": "projects: title",
+    "value": "Built with intention",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.projects.description",
+    "label": "projects: description",
+    "value": "Applications, experiments, and systems. A closer look at the thinking behind the code.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.community.eyebrow",
+    "label": "community: eyebrow",
+    "value": "BEYOND THE CODE",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.community.title",
+    "label": "community: title",
+    "value": "People & possibilities",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.community.description",
+    "label": "community: description",
+    "value": "The conversations, collaborations, and communities that make building worthwhile.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.activities.eyebrow",
+    "label": "activities: eyebrow",
+    "value": "THE FIELD NOTES",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.activities.title",
+    "label": "activities: title",
+    "value": "Out in the world",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.activities.description",
+    "label": "activities: description",
+    "value": "Hackathons, events, workshops, and the experiences in between.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.hackathons.eyebrow",
+    "label": "hackathons: eyebrow",
+    "value": "BUILD / LEARN / REPEAT",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.hackathons.title",
+    "label": "hackathons: title",
+    "value": "The hackathon notebook",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.hackathons.description",
+    "label": "hackathons: description",
+    "value": "A record of participation, teamwork, experiments, and lessons.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.events.eyebrow",
+    "label": "events: eyebrow",
+    "value": "GATHERINGS & SHARED IDEAS",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.events.title",
+    "label": "events: title",
+    "value": "Making things happen",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.events.description",
+    "label": "events: description",
+    "value": "Events organized, supported, and attended. Every contribution has its own story.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.experience.eyebrow",
+    "label": "experience: eyebrow",
+    "value": "THE JOURNEY SO FAR",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.experience.title",
+    "label": "experience: title",
+    "value": "Learning by doing",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.experience.description",
+    "label": "experience: description",
+    "value": "Professional and organizational chapters, with the work behind each role.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.writing.eyebrow",
+    "label": "writing: eyebrow",
+    "value": "THINKING OUT LOUD",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.writing.title",
+    "label": "writing: title",
+    "value": "Notes from the process",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.writing.description",
+    "label": "writing: description",
+    "value": "Technical explorations, project breakdowns, and things learned along the way.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.about.eyebrow",
+    "label": "about: eyebrow",
+    "value": "A LITTLE CONTEXT",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.about.title",
+    "label": "about: title",
+    "value": "Curiosity is the thread",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.about.description",
+    "label": "about: description",
+    "value": "Engineering, AI, and community. Connected by a desire to understand, build, and contribute.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.resume.eyebrow",
+    "label": "resume: eyebrow",
+    "value": "THE SHORT VERSION",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.resume.title",
+    "label": "resume: title",
+    "value": "Résumé",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "route.resume.description",
+    "label": "resume: description",
+    "value": "A current snapshot of my background and experience.",
+    "source": "src/app/(frontend)/[section]/page.tsx"
+  },
+  {
+    "key": "skills.website",
+    "label": "Website",
+    "value": "Website",
+    "source": "Shared UI"
+  },
+  {
+    "key": "empty.description",
+    "label": "New entries will appear here as they’re published.",
+    "value": "New entries will appear here as they’re published.",
+    "source": "Shared UI"
+  },
+  {
+    "key": "archive.all",
+    "label": "All",
+    "value": "All",
+    "source": "Shared UI"
+  },
+  {
+    "key": "archive.allYears",
+    "label": "All years",
+    "value": "All years",
+    "source": "Shared UI"
+  },
+  {
+    "key": "archive.allRoles",
+    "label": "All roles",
+    "value": "All roles",
+    "source": "Shared UI"
+  },
+  {
+    "key": "archive.entry",
+    "label": "ENTRY",
+    "value": "ENTRY",
+    "source": "Shared UI"
+  },
+  {
+    "key": "archive.entries",
+    "label": "ENTRIES",
+    "value": "ENTRIES",
+    "source": "Shared UI"
+  },
+  {
+    "key": "present",
+    "label": "Present",
+    "value": "Present",
+    "source": "Shared UI"
+  },
+  {
+    "key": "projects.live",
+    "label": "View Live Project",
+    "value": "View Live Project",
+    "source": "Shared UI"
+  },
+  {
+    "key": "projects.github",
+    "label": "GitHub Repository",
+    "value": "GitHub Repository",
+    "source": "Shared UI"
+  },
+  {
+    "key": "projects.githubOnly",
+    "label": "View on GitHub",
+    "value": "View on GitHub",
+    "source": "Shared UI"
+  },
+  {
+    "key": "meta.titleSuffix",
+    "label": "Engineering, AI & Community",
+    "value": "Engineering, AI & Community",
+    "source": "Shared UI"
+  },
+  {
+    "key": "meta.notFound",
+    "label": "Not found",
+    "value": "Not found",
+    "source": "Shared UI"
+  },
+  {
+    "key": "nav.open",
+    "label": "Open navigation",
+    "value": "Open navigation",
+    "source": "Shared UI"
+  },
+  {
+    "key": "nav.close",
+    "label": "Close navigation",
+    "value": "Close navigation",
+    "source": "Shared UI"
+  },
+  {
+    "key": "nav.home",
+    "label": "Home",
+    "value": "Home",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.back",
+    "label": "Back to",
+    "value": "Back to",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.role",
+    "label": "Role",
+    "value": "Role",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.organization",
+    "label": "Organization",
+    "value": "Organization",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.location",
+    "label": "Location",
+    "value": "Location",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.track",
+    "label": "Track",
+    "value": "Track",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.status",
+    "label": "Status",
+    "value": "Status",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.dates",
+    "label": "Dates",
+    "value": "Dates",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.overview",
+    "label": "Overview",
+    "value": "Overview",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.problem",
+    "label": "Problem",
+    "value": "Problem",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.solution",
+    "label": "Solution",
+    "value": "Solution",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.features",
+    "label": "Features",
+    "value": "Features",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.architecture",
+    "label": "Architecture",
+    "value": "Architecture",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.challenges",
+    "label": "Challenges",
+    "value": "Challenges",
+    "source": "Shared UI"
+  },
+  {
+    "key": "detail.outcomes",
+    "label": "Outcomes",
+    "value": "Outcomes",
+    "source": "Shared UI"
+  }
+]

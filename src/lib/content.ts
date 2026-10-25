@@ -2,7 +2,7 @@ export type Media = { id: number; url?: string; alt?: string; width?: number; he
 export type Entry = {
   id: number; title: string; slug?: string; tagline?: string; description?: string; excerpt?: string;
   category?: string; role?: string; technologies?: { name: string }[]; tags?: { name: string }[];
-  coverImage?: Media; poster?: Media; logo?: Media; icon?: Media; gallery?: { image: Media; caption?: string }[];
+  coverImage?: Media; poster?: Media; logo?: Media; icon?: Media; iconLight?: Media; iconDark?: Media; gallery?: { image: Media; caption?: string }[];
   organization?: Entry; organizer?: Entry; location?: string; startDate?: string; endDate?: string;
   githubURL?: string; liveURL?: string; eventURL?: string; website?: string; featured?: boolean; status?: string;
   responsibilities?: { item: string }[]; achievements?: { item: string }[];

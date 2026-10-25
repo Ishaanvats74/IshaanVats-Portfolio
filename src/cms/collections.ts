@@ -1,3 +1,4 @@
+import sharp from 'sharp'
 import type { Access, CollectionConfig, Field } from 'payload'
 import { revalidateTag } from 'next/cache'
 import { publishedHooks } from './published-hooks'
@@ -54,14 +55,25 @@ export const Contributions = content('contributions', [text('title', true), rela
 ])
 export const Organizations = content('organizations', [text('title', true), image('logo'), { name: 'description', type: 'textarea' }, url('website'), relation('relatedEvents', 'events'), relation('relatedContributions', 'contributions')])
 export const Articles = content('articles', [text('title', true), slug, { name: 'excerpt', type: 'textarea' }, image('coverImage'), rich('content'), rows('tags', [text('name', true)]), { name: 'publishedAt', type: 'date' }, seo])
-export const Skills = content('skills', [text('title', true), { name: 'category', type: 'select', required: true, options: ['Languages', 'Frontend', 'Backend', 'AI', 'Databases', 'Infrastructure / Other'] }, image('icon'), url('website'), { name: 'displayOrder', type: 'number', defaultValue: 0 }])
+export const Skills = content('skills', [text('title', true), { name: 'category', label: 'Category', type: 'text', required: true, maxLength: 45, admin: { description: 'Category tag, e.g. Languages, Frameworks, Tools or AI. Order categories in Website presentation.' } }, image('icon'), { ...image('iconLight'), label: 'Icon for light surfaces', admin: { description: 'Optional alternate. The current dark theme uses Icon or Icon for dark surfaces.' } }, { ...image('iconDark'), label: 'Icon for dark surfaces', admin: { description: 'Optional alternate preferred on the dark site.' } }, url('website'), { name: 'displayOrder', type: 'number', defaultValue: 0 }])
 export const Resume = content('resume', [text('title', true), { name: 'pdf', type: 'upload', relationTo: 'media', required: true, filterOptions: { mimeType: { equals: 'application/pdf' } }, validate: validateMedia('application/pdf') }, { name: 'lastUpdated', type: 'date', required: true }, image('previewImage'), { name: 'visible', type: 'checkbox', defaultValue: true }])
 export const Media: CollectionConfig = {
   slug: 'media', admin: { group: 'Assets', useAsTitle: 'alt' },
-  access: { read: published, create: authenticated, update: authenticated, delete: authenticated },
+  access: { read: () => true, create: authenticated, update: authenticated, delete: authenticated },
   versions: { drafts: true, maxPerDoc: 10 },
-  hooks: publishedHooks(refresh),
-  upload: { staticDir: 'media', mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'application/pdf'],
+  hooks: {
+    afterChange: [({doc})=>{refresh();return doc}], afterDelete:[({doc})=>{refresh();return doc}],
+    beforeOperation: [async ({args,operation})=>{
+      if ((operation==='create'||operation==='update') && args.req.file?.mimetype==='image/svg+xml') {
+        const file=args.req.file
+        // Rasterize SVG at ingestion: no scripts, foreignObject or external SVG markup is served.
+        const data=await sharp(file.data, {density:144, limitInputPixels:40_000_000}).png().toBuffer()
+        args.req.file={...file,data,size:data.length,mimetype:'image/png',name:file.name.replace(/\.svg$/i,'.png')}
+      }
+      return args
+    }],
+  },
+  upload: { staticDir: 'media', mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/svg+xml', 'application/pdf'],
     imageSizes: [{ name: 'card', width: 900, height: 675, position: 'centre' }, { name: 'thumbnail', width: 400, height: 300 }], adminThumbnail: 'thumbnail' },
   fields: [text('alt', true), text('caption'), text('attribution'), url('attributionURL')],
 }

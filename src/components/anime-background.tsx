@@ -1,4 +1,5 @@
 'use client'
+import { Copy } from '@/components/presentation'
 
 import { useEffect, useRef } from 'react'
 
@@ -62,12 +63,8 @@ export function AnimeBackground() {
             opacity=".4"
           />
         </svg>
-        <span className="world-kanji" lang="ja">
-          創造
-        </span>
-        <span className="world-caption">
-          THE NEXT CHAPTER IS YOURS TO BUILD.
-        </span>
+        <span className="world-kanji" lang="ja"> <Copy id="components.anime.background.tsx.1" /> </span>
+        <span className="world-caption"> <Copy id="components.anime.background.tsx.2" /> </span>
         <div className="speed-lines">
           {Array.from({ length: 7 }, (_, index) => (
             <i

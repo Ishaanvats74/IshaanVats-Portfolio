@@ -1,53 +1,25 @@
 'use client'
 
-import { useEffect, useRef, type ReactNode } from 'react'
-import Link from 'next/link'
+import { Children, useRef, type ReactNode } from 'react'
+import { CMSLink as Link } from '@/components/presentation'
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { usePresentation, resolveLink, useCopy } from './presentation'
 
 export function Approach() {
   const reduced = useReducedMotion()
   const element = useRef<HTMLDivElement>(null)
-  const line = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    const media = gsap.matchMedia()
-    media.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        line.current,
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: element.current,
-            start: 'top 85%',
-            end: 'bottom 50%',
-            scrub: 0.6,
-          },
-        },
-      )
-    })
-    return () => media.revert()
-  }, [])
-  const steps = [
-    ['Observe', 'Start with a question worth asking.'],
-    ['Connect', 'Look for the thread between ideas.'],
-    ['Experiment', 'Try things. Follow what surprises.'],
-    ['Build', 'Give the idea something tangible.'],
-    ['Learn', 'Reflect, refine, and go again.'],
-  ]
+  const { scrollYProgress } = useScroll({target:element,offset:['start end','end center']})
+  const steps = usePresentation().processSteps
   return (
     <div ref={element} className="approach-journey">
       <div className="approach-track" aria-hidden="true">
-        <div ref={line} />
+        <motion.div style={{scaleX:reduced?1:scrollYProgress}} />
       </div>
       <ol>
-        {steps.map(([title, description], index) => (
+        {steps.map(({title, description}, index) => (
           <motion.li key={title} initial={false}
-            whileInView={reduced ? undefined : { opacity: [0, 1], y: [16, 0] }} viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: index * 0.08 }}>
+            whileInView={reduced ? undefined : { opacity: [0, 1], y: [16, 0] }} viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.45, delay: Math.min(index,5) * 0.09 }}>
             <span className="approach-number">0{index + 1}</span>
             <h3>{title}</h3>
             <p>{description}</p>
@@ -71,42 +43,11 @@ export function Reveal({ children, className = '', delay = 0 }: {
   return <motion.div ref={element} className={className}
     initial={false}
     style={{ rotateX: reduced ? 0 : rotateX, transformPerspective: 1200, transformOrigin: '50% 100%' }}
-    whileInView={reduced ? undefined : { opacity: [0, 1], x: [12, 0], y: [20, 0] }}
-    viewport={{ once: true, amount: 'some', margin: '0px 0px -25px 0px' }}
-    transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}>
+    whileInView={reduced ? { opacity: [0.6, 1] } : { opacity: [0, 1], y: [28, 0], scale: [0.985, 1] }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.65, delay: Math.min(delay, 0.5), ease: [0.22, 1, 0.36, 1] }}>
     {children}
   </motion.div>
-}
-
-export function SkillEnergy() {
-  const element = useRef<HTMLDivElement>(null)
-  const fill = useRef<HTMLElement>(null)
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    const media = gsap.matchMedia()
-    media.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(
-        fill.current,
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          duration: 0.9,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: element.current,
-            start: 'top 94%',
-            once: true,
-          },
-        },
-      )
-    })
-    return () => media.revert()
-  }, [])
-  return (
-    <div ref={element} className="skill-energy" aria-hidden="true">
-      <i ref={fill} />
-    </div>
-  )
 }
 
 export function MagneticLink({
@@ -119,9 +60,11 @@ export function MagneticLink({
   ariaLabel?: string
 }) {
   const reduced = useReducedMotion()
+  const copy = useCopy()
   const x = useSpring(0, { stiffness: 240, damping: 22 })
   const y = useSpring(0, { stiffness: 240, damping: 22 })
   const reset = () => { x.set(0); y.set(0) }
+  if (!resolveLink(href,copy)) return null
   return (
     <span className="magnetic-wrap" onPointerMove={event => {
       if (reduced || event.pointerType !== 'mouse') return
@@ -130,7 +73,7 @@ export function MagneticLink({
       y.set(Math.max(-6, Math.min(6, (event.clientY - bounds.top - bounds.height / 2) * 0.15)))
     }} onPointerLeave={reset} onBlur={reset}>
       <motion.span style={{ x: reduced ? 0 : x, y: reduced ? 0 : y, display: 'inline-flex' }}>
-        <Link href={href} className={className} aria-label={ariaLabel}
+        <Link href={resolveLink(href, copy)} className={className} aria-label={ariaLabel}
           target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
           {children}
         </Link>
@@ -161,4 +104,8 @@ export function ProjectSurface({ media, children }: { media: ReactNode; children
     </motion.div></div>
     {children}
   </motion.article>
+}
+
+export function RevealGroup({children,className=''}:{children:ReactNode;className?:string}) {
+ return <div className={className}>{Children.toArray(children).map((child,index)=><Reveal key={index} delay={Math.min(index,5)*.09}>{child}</Reveal>)}</div>
 }

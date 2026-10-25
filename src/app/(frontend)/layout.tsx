@@ -1,7 +1,11 @@
+import { copyReader } from '@/lib/presentation'
+import { CMSAnchor } from '@/components/presentation'
+import { PresentationProvider, Visible } from '@/components/presentation'
+import { Copy } from '@/components/presentation'
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { CMSLink as Link } from '@/components/presentation'
 import { ArrowUpRight } from 'lucide-react'
-import { getSettings, cmsConfigured } from '@/lib/data'
+import { getSettings, getPresentation, cmsConfigured } from '@/lib/data'
 import { Navigation } from '@/components/navigation'
 import { MotionLayer } from '@/components/motion-layer'
 import { MagneticLink, Reveal } from '@/components/experience'
@@ -13,12 +17,13 @@ import './theme.css'
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings()
+  const copy = copyReader(await getPresentation())
   return {
     metadataBase: new URL(
       process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
     ),
     title: {
-      default: `${settings.name} — Engineering, AI & Community`,
+      default: `${settings.name} — ${copy('meta.titleSuffix')}`,
       template: `%s — ${settings.name}`,
     },
     description: settings.seo?.description || settings.biography,
@@ -35,31 +40,23 @@ export default async function Layout({
 }: {
   children: React.ReactNode
 }) {
-  const settings = await getSettings()
+  const [settings, presentation] = await Promise.all([getSettings(), getPresentation()])
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body>
-        <a className="skip-link" href="#main">
-          Skip to content
-        </a>
-        <Navigation settings={settings} />
+      <body><PresentationProvider value={presentation}>
+        <CMSAnchor className="skip-link" href="#main"> <Copy id="app.frontend.layout.tsx.1" /> </CMSAnchor>
+        <Visible name="navigation"><Navigation settings={settings} /></Visible>
         <main id="main">{children}</main>
-        <Reveal>
+        <Visible name="contact"><Reveal>
           <footer id="contact" className="site-footer">
             <div className="footer-transmission">
-              <span>NEXT EPISODE PREVIEW / CONTACT</span>
-              <span lang="ja" aria-hidden="true">
-                連絡
-              </span>
+              <span><Copy id="app.frontend.layout.tsx.2" /></span>
+              <span lang="ja" aria-hidden="true"> <Copy id="app.frontend.layout.tsx.3" /> </span>
             </div>
-            <div className="eyebrow">
-              HAVE AN IDEA, A QUESTION, OR A SHARED CURIOSITY?
-            </div>
+            <div className="eyebrow"> <Copy id="app.frontend.layout.tsx.4" /> </div>
             <div className="footer-title">
-              <h2>
-                LET’S BUILD
-                <br />
-                <span>THE NEXT CHAPTER.</span>
+              <h2> <Copy id="app.frontend.layout.tsx.5" /> <br />
+                <span><Copy id="app.frontend.layout.tsx.6" /></span>
               </h2>
               {settings.email && (
                 <MagneticLink
@@ -73,22 +70,20 @@ export default async function Layout({
             </div>
             <div className="footer-links">
               {settings.email && (
-                <a href={`mailto:${settings.email}`}>
+                <CMSAnchor href={`mailto:${settings.email}`}>
                   {settings.email}
                   <ArrowUpRight size={15} />
-                </a>
+                </CMSAnchor>
               )}
               {settings.phone && (
-                <a href={`tel:${settings.phone}`}>{settings.phone}</a>
+                <CMSAnchor href={`tel:${settings.phone}`}>{settings.phone}</CMSAnchor>
               )}
               {settings.socialLinks?.map((link) => (
                 <ExternalLink key={link.url} href={link.url}>
                   {link.label}
                 </ExternalLink>
               ))}
-              <Link href="/resume">
-                Résumé
-                <ArrowUpRight size={15} />
+              <Link href="/resume"> <Copy id="app.frontend.layout.tsx.7" /> <ArrowUpRight size={15} />
               </Link>
             </div>
             <div className="footer-bottom">
@@ -96,17 +91,15 @@ export default async function Layout({
                 © {new Date().getFullYear()} {settings.name}
               </span>
               <span>{settings.footer}</span>
-              <a href="#top">BACK TO TOP ↑</a>
+              <CMSAnchor href="#top"><Copy id="app.frontend.layout.tsx.8" /></CMSAnchor>
             </div>
           </footer>
-        </Reveal>
+        </Reveal></Visible>
         <MotionLayer />
         {!cmsConfigured && (
-          <div className="preview-note">
-            LOCAL PREVIEW · Connect Payload to publish your content
-          </div>
+          <div className="preview-note"> <Copy id="app.frontend.layout.tsx.9" /> </div>
         )}
-      </body>
+      </PresentationProvider></body>
     </html>
   )
 }

@@ -107,9 +107,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'site-settings': SiteSetting;
+    presentation: Presentation;
   };
   globalsSelect: {
     'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    presentation: PresentationSelect<false> | PresentationSelect<true>;
   };
   locale: null;
   widgets: {
@@ -171,21 +173,39 @@ export interface User {
  */
 export interface Project {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   slug: string;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   tagline?: string | null;
   description?: string | null;
   category: 'Engineering' | 'AI' | 'Developer tools';
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   technologies?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         name: string;
         id?: string | null;
       }[]
     | null;
   coverImage?: (number | null) | Media;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   gallery?:
     | {
         image?: (number | null) | Media;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         caption?: string | null;
         id?: string | null;
       }[]
@@ -243,6 +263,9 @@ export interface Project {
       };
       [k: string]: unknown;
     } | null;
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     role?: string | null;
     features?: {
       root: {
@@ -308,6 +331,9 @@ export interface Project {
   relatedEvents?: (number | Event)[] | null;
   relatedHackathons?: (number | Hackathon)[] | null;
   seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     title?: string | null;
     description?: string | null;
     image?: (number | null) | Media;
@@ -322,8 +348,17 @@ export interface Project {
  */
 export interface Media {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   alt: string;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   caption?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   attribution?: string | null;
   attributionURL?: string | null;
   _objectKey?: string | null;
@@ -364,6 +399,9 @@ export interface Media {
  */
 export interface Event {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   slug: string;
   category?: ('Hackathon' | 'Workshop' | 'Meetup' | 'Conference' | 'Other') | null;
@@ -372,19 +410,34 @@ export interface Event {
   description?: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   location?: string | null;
   coverImage?: (number | null) | Media;
   poster?: (number | null) | Media;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   gallery?:
     | {
         image?: (number | null) | Media;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         caption?: string | null;
         id?: string | null;
       }[]
     | null;
   eventURL?: string | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   responsibilities?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         item: string;
         id?: string | null;
       }[]
@@ -393,6 +446,9 @@ export interface Event {
   featured?: boolean | null;
   displayOrder?: number | null;
   seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     title?: string | null;
     description?: string | null;
     image?: (number | null) | Media;
@@ -407,6 +463,9 @@ export interface Event {
  */
 export interface Organization {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   logo?: (number | null) | Media;
   description?: string | null;
@@ -423,30 +482,57 @@ export interface Organization {
  */
 export interface Contribution {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   organization?: (number | null) | Organization;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   role?: string | null;
   description?: string | null;
   startDate?: string | null;
   endDate?: string | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   responsibilities?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         item: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   gallery?:
     | {
         image?: (number | null) | Media;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         caption?: string | null;
         id?: string | null;
       }[]
     | null;
   relatedEvents?: (number | Event)[] | null;
   relatedProjects?: (number | Project)[] | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   verifiedMetrics?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         label: string;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         value: string;
         sourceURL?: string | null;
         id?: string | null;
@@ -462,33 +548,69 @@ export interface Contribution {
  */
 export interface Hackathon {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   slug: string;
   organizer?: (number | null) | Organization;
   startDate?: string | null;
   endDate?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   location?: string | null;
   coverImage?: (number | null) | Media;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   gallery?:
     | {
         image?: (number | null) | Media;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         caption?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   role?: string | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   team?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         name: string;
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         role?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   track?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   verifiedAchievement?: string | null;
   relatedProjects?: (number | Project)[] | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   technologies?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         name: string;
         id?: string | null;
       }[]
@@ -498,6 +620,9 @@ export interface Hackathon {
   liveURL?: string | null;
   description?: string | null;
   seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     title?: string | null;
     description?: string | null;
     image?: (number | null) | Media;
@@ -512,20 +637,38 @@ export interface Hackathon {
  */
 export interface Experience {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   organization?: (number | null) | Organization;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   role: string;
   startDate?: string | null;
   endDate?: string | null;
   description?: string | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   responsibilities?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         item: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   achievements?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         item: string;
         id?: string | null;
       }[]
@@ -543,6 +686,9 @@ export interface Experience {
  */
 export interface Article {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   slug: string;
   excerpt?: string | null;
@@ -562,14 +708,23 @@ export interface Article {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   tags?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         name: string;
         id?: string | null;
       }[]
     | null;
   publishedAt?: string | null;
   seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     title?: string | null;
     description?: string | null;
     image?: (number | null) | Media;
@@ -584,9 +739,23 @@ export interface Article {
  */
 export interface Skill {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
-  category: 'Languages' | 'Frontend' | 'Backend' | 'AI' | 'Databases' | 'Infrastructure / Other';
+  /**
+   * Category tag, e.g. Languages, Frameworks, Tools or AI. Order categories in Website presentation.
+   */
+  category: string;
   icon?: (number | null) | Media;
+  /**
+   * Optional alternate. The current dark theme uses Icon or Icon for dark surfaces.
+   */
+  iconLight?: (number | null) | Media;
+  /**
+   * Optional alternate preferred on the dark site.
+   */
+  iconDark?: (number | null) | Media;
   website?: string | null;
   displayOrder?: number | null;
   updatedAt: string;
@@ -599,6 +768,9 @@ export interface Skill {
  */
 export interface Resume {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   title: string;
   pdf: number | Media;
   lastUpdated: string;
@@ -1011,6 +1183,8 @@ export interface SkillsSelect<T extends boolean = true> {
   title?: T;
   category?: T;
   icon?: T;
+  iconLight?: T;
+  iconDark?: T;
   website?: T;
   displayOrder?: T;
   updatedAt?: T;
@@ -1124,46 +1298,219 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSetting {
   id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   name: string;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   headline?: string | null;
   biography?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   education?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   location?: string | null;
   portrait?: (number | null) | Media;
   email?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   phone?: string | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   socialLinks?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         label: string;
         url?: string | null;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Add, remove or drag rows to change their order.
+   */
   navigation?:
     | {
+        /**
+         * Keep this copy concise. Maximum 120 characters.
+         */
         label: string;
         href: string;
         id?: string | null;
       }[]
     | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
   footer?: string | null;
   seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     title?: string | null;
     description?: string | null;
     image?: (number | null) | Media;
   };
   homepage?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     eyebrow?: string | null;
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     intro?: string | null;
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
     communityIntro?: string | null;
+    /**
+     * Add, remove or drag rows to change their order.
+     */
     pillars?:
       | {
+          /**
+           * Keep this copy concise. Maximum 120 characters.
+           */
           title: string;
           description: string;
           id?: string | null;
         }[]
       | null;
   };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "presentation".
+ */
+export interface Presentation {
+  id: number;
+  /**
+   * Edit, remove or drag rows to reorder section visibility and order.
+   */
+  sections?:
+    | {
+        /**
+         * Stable section identifier. Homepage rows also control display order.
+         */
+        key:
+          | 'hero'
+          | 'chapters'
+          | 'profile'
+          | 'arsenal'
+          | 'work'
+          | 'journey'
+          | 'community'
+          | 'events'
+          | 'process'
+          | 'navigation'
+          | 'contact'
+          | 'projects-page'
+          | 'community-page'
+          | 'about-page'
+          | 'experience-page'
+          | 'activities-page'
+          | 'hackathons-page'
+          | 'events-page'
+          | 'resume-page'
+          | 'writing-page';
+        /**
+         * Turn off to hide this section without deleting content.
+         */
+        enabled?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Edit, remove or drag rows to reorder origin cards.
+   */
+  originCards?:
+    | {
+        /**
+         * Title. Maximum 35 characters; clear optional text to hide it.
+         */
+        title?: string | null;
+        /**
+         * Description. Maximum 120 characters; clear optional text to hide it.
+         */
+        description?: string | null;
+        /**
+         * Choose a clean SVG icon.
+         */
+        icon?: ('education' | 'code' | 'users') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Edit, remove or drag rows to reorder community badges.
+   */
+  communityTags?:
+    | {
+        /**
+         * Badge label. Maximum 45 characters; clear optional text to hide it.
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Edit, remove or drag rows to reorder process steps.
+   */
+  processSteps?:
+    | {
+        /**
+         * Step title. Maximum 35 characters; clear optional text to hide it.
+         */
+        title?: string | null;
+        /**
+         * Step description. Maximum 120 characters; clear optional text to hide it.
+         */
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Edit, remove or drag rows to reorder skill category order.
+   */
+  categories?:
+    | {
+        /**
+         * Category name. Maximum 45 characters; clear optional text to hide it.
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Edit, remove or drag rows to reorder page copy, japanese accents and links.
+   */
+  copy?:
+    | {
+        /**
+         * Stable identifier from the copy audit. Keep this unchanged when editing text.
+         */
+        key: string;
+        /**
+         * Editor label. Maximum 90 characters; clear optional text to hide it.
+         */
+        label?: string | null;
+        /**
+         * Maximum 120 characters for copy; 240 for link URLs. Japanese accents are separate rows. Empty text removes the copy; link rows accept internal paths, anchors, HTTP(S), mailto or tel.
+         */
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1215,6 +1562,57 @@ export interface SiteSettingsSelect<T extends boolean = true> {
               description?: T;
               id?: T;
             };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "presentation_select".
+ */
+export interface PresentationSelect<T extends boolean = true> {
+  sections?:
+    | T
+    | {
+        key?: T;
+        enabled?: T;
+        id?: T;
+      };
+  originCards?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        icon?: T;
+        id?: T;
+      };
+  communityTags?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  processSteps?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  categories?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  copy?:
+    | T
+    | {
+        key?: T;
+        label?: T;
+        value?: T;
+        id?: T;
       };
   updatedAt?: T;
   createdAt?: T;
