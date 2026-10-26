@@ -43,7 +43,7 @@ test('Neon uses TLS and never pushes schema from a local development server', ()
   })
   assert.equal(options.push, false)
   assert.equal(options.disableCreateDatabase, true)
-  assert.equal(options.pool.connectionString, url)
+  assert.equal(options.pool.connectionString, url.replace('sslmode=require', 'sslmode=verify-full'))
   assert.equal(options.pool.max, 5)
   assert.throws(
     () => databaseOptions({ DATABASE_URL: url.split('?')[0] }),

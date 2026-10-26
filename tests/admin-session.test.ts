@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import type { Payload } from 'payload'
 import { extractJWT } from '../node_modules/payload/dist/auth/extractJWT.js'
-import { adminCSRFOrigins } from '../src/lib/server-environment.mjs'
+import { adminCSRFOrigins, payloadServerURL } from '../src/lib/server-environment.mjs'
 
 function cookieToken(
   origin: string,
@@ -56,4 +56,18 @@ test('production admin accepts only the configured origin', () => {
   ]) {
     assert.equal(cookieToken(origin, csrf), null)
   }
+})
+
+test('a production public URL in .env does not reject local development admin saves', () => {
+  const env = { NODE_ENV: 'development', NEXT_PUBLIC_SERVER_URL: 'https://portfolio.example' }
+  const csrf = adminCSRFOrigins(payloadServerURL(env))
+  for (const origin of ['http://127.0.0.1:3000', 'http://localhost:3000', 'http://[::1]:3000']) {
+    assert.equal(cookieToken(origin, csrf), 'test-session')
+  }
+  for (const origin of ['https://portfolio.example', 'https://attacker.example', 'http://localhost:3001']) {
+    assert.equal(cookieToken(origin, csrf), null)
+  }
+  assert.equal(payloadServerURL({ ...env, PORT: '3021' }), 'http://127.0.0.1:3021')
+  assert.equal(payloadServerURL({ ...env, NODE_ENV: 'production' }), 'https://portfolio.example')
+  assert.equal(payloadServerURL({ ...env, NEXT_PUBLIC_SERVER_URL: 'http://localhost:4000' }), 'http://localhost:4000')
 })

@@ -11,11 +11,10 @@ export type Presentation = {
 }
 export const defaultPresentation: Presentation = {
  copy: catalog,
- sections: ['hero','chapters','profile','arsenal','work','journey','community','events','process','navigation','contact','projects-page','community-page','about-page','experience-page','activities-page','hackathons-page','events-page','resume-page','writing-page'].map(key => ({key:key as NonNullable<PayloadPresentation['sections']>[number]['key'],enabled:true})),
+ sections: ['hero','chapters','profile','arsenal','work','journey','certificates','events','process','navigation','contact','projects-page','about-page','experience-page','activities-page','hackathons-page','events-page','resume-page','writing-page','certificates-page','about-community','about-experience'].map(key => ({key:key as NonNullable<PayloadPresentation['sections']>[number]['key'],enabled:true})),
  originCards: [
  {title:'Education',description:'B.Sc. (Hons) CS @ SSCBS, University of Delhi',icon:'education'},
  {title:'Focus',description:'Full-Stack Systems & AI Engineering',icon:'code'},
- {title:'Community',description:'Tech & Event Lead @ Geek Room',icon:'users'},
  ],
  communityTags: ['Hackathon Organizer','Community Builder','Sponsorship Lead'].map(label=>({label})),
  processSteps: [['Observe','Find the right question.'],['Connect','Connect the ideas.'],['Experiment','Test what matters.'],['Build','Make it useful.'],['Learn','Reflect. Refine. Repeat.']].map(([title,description])=>({title,description})),

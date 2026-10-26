@@ -1,3 +1,4 @@
+import { CertificateGrid } from '@/components/certificates'
 import { copyReader } from '@/lib/presentation'
 import { CMSAnchor } from '@/components/presentation'
 import { HomeSections } from '@/components/presentation'
@@ -44,12 +45,13 @@ function Episode({
 }
 
 export default async function Home() {
-  const [settings, projects, events, skills, experience] = await Promise.all([
+  const [settings, projects, events, skills, experience, certificates] = await Promise.all([
     getSettings(),
     getEntries('projects'),
     getEntries('events'),
     getEntries('skills'),
     getEntries('experience'),
+    getEntries('certificates'),
   ])
   const selected = (
     projects.some((p) => p.featured)
@@ -297,36 +299,11 @@ export default async function Home() {
           </Reveal>
         </section>
       )}
-      <section className="community-sector episode-section" id="community">
-        <div className="container">
-          <Reveal>
-            <Episode number="05" title={copy('app.frontend.page.tsx.prop.10')} japanese={copy('app.frontend.page.tsx.prop.11')} />
-            <div className="community-grid">
-              <div>
-                <span className="eyebrow"><Copy id="app.frontend.page.tsx.46" /></span>
-                <h2> <Copy id="app.frontend.page.tsx.47" /> <br /> <Copy id="app.frontend.page.tsx.48" /> <em><Copy id="app.frontend.page.tsx.49" /></em>
-                </h2>
-                <div className="allies-mark" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-              </div>
-              <div className="community-message">
-                <span className="message-tag"> <Copy id="app.frontend.page.tsx.50" /> </span>
-                <ul className="community-badges" aria-label={copy('app.frontend.page.tsx.prop.12')}>
-                  {presentation.communityTags.map((tag,index) => <li key={index}>{tag.label}</li>)}
-                </ul>
-                <div className="community-actions">
-                  <MagneticLink href="/community" className="button"> <Copy id="app.frontend.page.tsx.51" /> <ArrowUpRight size={16} />
-                  </MagneticLink>
-                  <Link href="/activities" className="text-link"> <Copy id="app.frontend.page.tsx.52" /> <ArrowUpRight size={16} />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+      <section id="certificates" className="container episode-section certificates-section">
+        <Reveal><div className="episode-label"><span>{copy('certificates.episode')}</span><span lang="ja" aria-hidden="true">{copy('certificates.headingJP')}</span></div>
+          <div className="episode-heading"><h2>{copy('certificates.homeTitle')}</h2><div><p>{copy('certificates.homeDescription')}</p><Link href="/certificates" className="text-link">{copy('certificates.more')}<ArrowUpRight size={16}/></Link></div></div>
+        </Reveal>
+        <CertificateGrid entries={certificates} filters={false} limit={4}/>
       </section>
       {events.filter((e) => e.featured).length > 0 && (
         <section id="events" className="events-sector container episode-section">

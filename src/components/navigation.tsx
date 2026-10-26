@@ -61,7 +61,7 @@ export function Navigation({ settings }: { settings: Settings }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
           >
-            {[...settings.navigation, { label: 'Résumé', href: '/resume' }].map(
+            {[...settings.navigation, { label: copy('components.navigation.tsx.4'), href: '/resume' }].map(
               (item) => (
                 <Link
                   key={item.href}

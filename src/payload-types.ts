@@ -78,6 +78,7 @@ export interface Config {
     skills: Skill;
     media: Media;
     resume: Resume;
+    certificates: Certificate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -96,6 +97,7 @@ export interface Config {
     skills: SkillsSelect<false> | SkillsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     resume: ResumeSelect<false> | ResumeSelect<true>;
+    certificates: CertificatesSelect<false> | CertificatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -782,6 +784,55 @@ export interface Resume {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certificates".
+ */
+export interface Certificate {
+  id: number;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
+  title: string;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
+  eventName: string;
+  /**
+   * How you contributed to this event.
+   */
+  activityType: 'participated' | 'organized';
+  date?: string | null;
+  /**
+   * Keep this copy concise. Maximum 120 characters.
+   */
+  issuerName?: string | null;
+  organization?: (number | null) | Organization;
+  event?: (number | null) | Event;
+  /**
+   * Optional context, maximum 180 characters.
+   */
+  description?: string | null;
+  previewImage?: (number | null) | Media;
+  /**
+   * Upload the certificate image or PDF in Media, then select it here.
+   */
+  certificateFile?: (number | null) | Media;
+  credentialURL?: string | null;
+  displayOrder?: number | null;
+  visible?: boolean | null;
+  seo?: {
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -847,6 +898,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'resume';
         value: number | Resume;
+      } | null)
+    | ({
+        relationTo: 'certificates';
+        value: number | Certificate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1254,6 +1309,35 @@ export interface ResumeSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certificates_select".
+ */
+export interface CertificatesSelect<T extends boolean = true> {
+  title?: T;
+  eventName?: T;
+  activityType?: T;
+  date?: T;
+  issuerName?: T;
+  organization?: T;
+  event?: T;
+  description?: T;
+  previewImage?: T;
+  certificateFile?: T;
+  credentialURL?: T;
+  displayOrder?: T;
+  visible?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1348,6 +1432,27 @@ export interface SiteSetting {
       }[]
     | null;
   /**
+   * Community details shown only on the About page.
+   */
+  community?: {
+    enabled?: boolean | null;
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
+    name?: string | null;
+    /**
+     * Keep this copy concise. Maximum 120 characters.
+     */
+    role?: string | null;
+    organization?: (number | null) | Organization;
+    logo?: (number | null) | Media;
+    /**
+     * Maximum 240 characters. Keep it concise.
+     */
+    description?: string | null;
+    website?: string | null;
+  };
+  /**
    * Keep this copy concise. Maximum 120 characters.
    */
   footer?: string | null;
@@ -1369,7 +1474,7 @@ export interface SiteSetting {
      */
     intro?: string | null;
     /**
-     * Keep this copy concise. Maximum 120 characters.
+     * Preserved introduction, maximum 240 characters. Edit the About community card in Community on About.
      */
     communityIntro?: string | null;
     /**
@@ -1423,7 +1528,11 @@ export interface Presentation {
           | 'hackathons-page'
           | 'events-page'
           | 'resume-page'
-          | 'writing-page';
+          | 'writing-page'
+          | 'certificates'
+          | 'certificates-page'
+          | 'about-community'
+          | 'about-experience';
         /**
          * Turn off to hide this section without deleting content.
          */
@@ -1540,6 +1649,17 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         label?: T;
         href?: T;
         id?: T;
+      };
+  community?:
+    | T
+    | {
+        enabled?: T;
+        name?: T;
+        role?: T;
+        organization?: T;
+        logo?: T;
+        description?: T;
+        website?: T;
       };
   footer?: T;
   seo?:

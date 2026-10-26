@@ -1,6 +1,7 @@
 export type Media = { id: number; url?: string; alt?: string; width?: number; height?: number; mimeType?: string }
 export type Entry = {
-  id: number; title: string; slug?: string; tagline?: string; description?: string; excerpt?: string;
+  id: number; title: string;
+  event?: Entry; eventName?: string; activityType?: 'participated' | 'organized'; date?: string; issuerName?: string; certificateFile?: Media; credentialURL?: string; slug?: string; tagline?: string; description?: string; excerpt?: string;
   category?: string; role?: string; technologies?: { name: string }[]; tags?: { name: string }[];
   coverImage?: Media; poster?: Media; logo?: Media; icon?: Media; iconLight?: Media; iconDark?: Media; gallery?: { image: Media; caption?: string }[];
   organization?: Entry; organizer?: Entry; location?: string; startDate?: string; endDate?: string;
@@ -15,6 +16,7 @@ export type Entry = {
 }
 export type Settings = {
   name: string; headline: string; biography: string; education: string; location?: string; portrait?: Media;
+  community?: {enabled?:boolean;name?:string;role?:string;organization?:Entry;logo?:Media;description?:string;website?:string};
   email?: string; phone?: string; socialLinks: { label: string; url: string }[];
   navigation: { label: string; href: string }[]; footer: string; seo?: Entry['seo'];
   homepage: { eyebrow: string; intro: string; communityIntro: string; pillars: { title: string; description: string }[] };
@@ -24,7 +26,7 @@ export const initialSettings: Settings = {
   biography: 'I’m Ishaan, a Computer Science student at SSCBS, University of Delhi. I’m interested in full-stack development, AI engineering, developer tools, and the communities that bring people together.',
   education: 'B.Sc. (Hons.) Computer Science · SSCBS, University of Delhi', location: 'Delhi, India',
   socialLinks: [{ label: 'GitHub', url: 'https://github.com/Ishaanvats74' }],
-  navigation: [{ label: 'Work', href: '/projects' }, { label: 'Community', href: '/community' }, { label: 'About', href: '/about' }],
+  navigation: [{ label: 'Projects', href: '/projects' }, { label: 'Certificates', href: '/certificates' }, { label: 'About', href: '/about' }],
   footer: 'Built with curiosity. Made for the web.',
   homepage: {
     eyebrow: 'DEVELOPER / AI EXPLORER / COMMUNITY BUILDER',

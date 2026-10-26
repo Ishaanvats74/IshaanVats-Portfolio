@@ -1,4 +1,26 @@
-# Verification — 24 October 2026
+# Verification — 26 October 2026
+
+## About community, certificates and static tech cards — 26 October 2026
+
+Removed tech-card hover translation/rotation and hover-border changes. The Community homepage block and standalone Community content are removed. `/community` redirects to `/about#community`; navigation is now Projects, Certificates and About. About reads its community details/logo from Site Settings and published Experience records from the existing collection.
+
+Added the Certificates collection with participated/organized involvement, event title/date, issuer/organization, optional related event, preview image, certificate image/PDF, credential link, display order and visibility. The homepage preview and `/certificates` gallery use published records; empty states and the involvement filters work without fabricated entries. New headings, filters and About visibility controls live in Website presentation.
+
+Migration `20261026_053300` was reviewed and applied to Neon. The seed moved the requested navigation and content once, then imported the official Geek Room profile logo into persistent Payload Media. Existing custom settings, projects, skills, events, experience and contributions were retained. The organization logo can be overridden from Site settings → Community on About. Source attribution is stored on the Media record.
+
+Browser verification confirmed Projects/Certificates navigation, the loaded logo on About, the experience empty state, certificate filtering, and mobile layout without horizontal overflow at 390px. Screenshots: docs/about-community-preview.png and docs/mobile-certificates-preview.png. TypeScript, ESLint and all nineteen tests passed. A production build exposed a Neon connection timeout with eleven static workers, so static generation is now limited to two workers with bounded per-worker concurrency and one retry. The production build then passed, including all sixteen generated pages and trace collection. All fifteen route smoke checks passed, including `/certificates`, the missing-project 404 and the legacy Community redirect. `git diff --check` reported no whitespace errors. The development preview was restarted at http://127.0.0.1:3000/.
+
+## Responsive layout, compact skills and About portrait — 26 October 2026
+
+About previously rendered only the monogram, even with a populated Site Settings portrait. It now renders the uploaded portrait with a reserved responsive frame, CMS alt text/name fallback, responsive sizes and a monogram fallback when unset. The asset was verified loaded at 390px and 768px in the browser.
+
+Skill cards now use compact icon/name/category rows, 28–32px icons, smaller padding and subtle offset borders. Six real CMS skill icons loaded during verification; desktop cards measured approximately 177 × 77px, while a phone card measured 148 × 68px. The group grid wraps to two columns on phones and one column on narrow 320px screens. The hero, navigation, filters, content grids, footer links, and embedded resume have mobile rules that preserve the existing palette and routes.
+
+Browser checks covered 320px and 390px phones, 768px tablet and 1280px desktop. The inspected layouts had no horizontal document overflow, the mobile menu opened and dismissed with Escape, and the portrait and skill icons loaded. Screenshots are in docs/mobile-about-preview.png and docs/mobile-skills-preview.png. Temporary viewport overrides were reset.
+
+The installed pg parser warned that require/verify-ca aliases would change behavior in a future release. Neon runtime URLs now explicitly select verify-full, preserving certificate/hostname checks without changing credentials or editing .env. Regression expectations reflect the explicit mode.
+
+TypeScript, ESLint and all nineteen tests passed. The production Next.js build also passed, including static route generation and trace collection. No new database schema changes or content writes were needed for this responsive pass.
 
 ## Blank collection creation forms — 24 October 2026
 

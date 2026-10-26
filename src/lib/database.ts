@@ -2,7 +2,7 @@ import { databaseURLs } from './server-environment.mjs'
 
 /** Server-only database configuration. Connection strings must never be logged. */
 export function databaseOptions(env: Record<string, string | undefined>) {
-  const connectionString = databaseURLs(env).runtime
+  let connectionString = databaseURLs(env).runtime
   let local = false
   if (connectionString) {
     let url: URL
@@ -27,6 +27,11 @@ export function databaseOptions(env: Record<string, string | undefined>) {
       throw new Error(
         'Use the Neon connection string with sslmode=require (or verify-full).',
       )
+    }
+    if (url.hostname.endsWith('.neon.tech')) {
+      // Keep certificate and hostname verification explicit across pg versions.
+      url.searchParams.set('sslmode', 'verify-full')
+      connectionString = url.toString()
     }
   }
   return {

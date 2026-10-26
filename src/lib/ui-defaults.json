@@ -241,8 +241,8 @@
   },
   {
     "key": "app.frontend.page.tsx.5",
-    "label": "Explore the work",
-    "value": "Explore the work",
+    "label": "Explore projects",
+    "value": "Explore projects",
     "source": "src/app/(frontend)/page.tsx"
   },
   {
@@ -325,8 +325,8 @@
   },
   {
     "key": "app.frontend.page.tsx.19",
-    "label": "Read my story",
-    "value": "Read my story",
+    "label": "About & experience",
+    "value": "About & experience",
     "source": "src/app/(frontend)/page.tsx"
   },
   {
@@ -848,7 +848,7 @@
   {
     "key": "link./community",
     "label": "Link: /community",
-    "value": "/community",
+    "value": "/about#community",
     "source": "src/app/(frontend)/page.tsx"
   },
   {
@@ -895,14 +895,14 @@
   },
   {
     "key": "app.frontend.section.page.tsx.prop.3",
-    "label": "Related work",
-    "value": "Related work",
+    "label": "Related projects",
+    "value": "Related projects",
     "source": "src/app/(frontend)/[section]\\page.tsx"
   },
   {
     "key": "app.frontend.section.page.tsx.prop.4",
-    "label": "Related work",
-    "value": "Related work",
+    "label": "Related projects",
+    "value": "Related projects",
     "source": "src/app/(frontend)/[section]\\page.tsx"
   },
   {
@@ -943,8 +943,8 @@
   },
   {
     "key": "route.projects.eyebrow",
-    "label": "projects: eyebrow",
-    "value": "THE WORK / AN EVOLVING COLLECTION",
+    "label": "PROJECTS / AN EVOLVING COLLECTION",
+    "value": "PROJECTS / AN EVOLVING COLLECTION",
     "source": "src/app/(frontend)/[section]/page.tsx"
   },
   {
@@ -1282,5 +1282,131 @@
     "label": "Outcomes",
     "value": "Outcomes",
     "source": "Shared UI"
+  },
+  {
+    "key": "certificates.title",
+    "label": "Certificates",
+    "value": "Certificates",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.eyebrow",
+    "label": "EVENTS / PROOF OF PARTICIPATION",
+    "value": "EVENTS / PROOF OF PARTICIPATION",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.description",
+    "label": "Events I participated in. Events I helped bring to life.",
+    "value": "Events I participated in. Events I helped bring to life.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.all",
+    "label": "All certificates",
+    "value": "All certificates",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.participated",
+    "label": "Participated",
+    "value": "Participated",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.organized",
+    "label": "Organized",
+    "value": "Organized",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.open",
+    "label": "View certificate",
+    "value": "View certificate",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.verify",
+    "label": "Verify credential",
+    "value": "Verify credential",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.empty",
+    "label": "Certificates will appear here as they’re published.",
+    "value": "Certificates will appear here as they’re published.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.homeTitle",
+    "label": "Experiences. Documented.",
+    "value": "Experiences. Documented.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.homeDescription",
+    "label": "Participation, organization, and the moments behind each certificate.",
+    "value": "Participation, organization, and the moments behind each certificate.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.episode",
+    "label": "EPISODE 05 / CERTIFICATES",
+    "value": "EPISODE 05 / CERTIFICATES",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.headingJP",
+    "label": "証明",
+    "value": "証明",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "certificates.more",
+    "label": "All certificates",
+    "value": "All certificates",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.community.title",
+    "label": "Community",
+    "value": "Community",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.community.description",
+    "label": "Building connections beyond the code.",
+    "value": "Building connections beyond the code.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.community.website",
+    "label": "Community website",
+    "value": "Community website",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.experience.title",
+    "label": "Experience",
+    "value": "Experience",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.experience.description",
+    "label": "The roles, teams, and work behind my journey.",
+    "value": "The roles, teams, and work behind my journey.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "about.experience.empty",
+    "label": "Experience will appear here as it’s published.",
+    "value": "Experience will appear here as it’s published.",
+    "source": "Certificates / About"
+  },
+  {
+    "key": "link./certificates",
+    "label": "/certificates",
+    "value": "/certificates",
+    "source": "Certificates / About"
   }
 ]

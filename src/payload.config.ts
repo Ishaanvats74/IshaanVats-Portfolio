@@ -11,6 +11,7 @@ import { SiteSettings } from './cms/settings'
 import { databaseOptions } from './lib/database'
 import {
   adminCSRFOrigins,
+  payloadServerURL,
   databaseURLs,
   storageConfig,
 } from './lib/server-environment.mjs'
@@ -18,7 +19,7 @@ import {
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 const storage = storageConfig(process.env)
 if (process.env.VERCEL && (!storage.bucket || !storage.config.credentials.accessKeyId || !storage.config.credentials.secretAccessKey || !process.env.NEXT_PUBLIC_SERVER_URL)) throw new Error('Vercel requires S3_BUCKET, S3 credentials and NEXT_PUBLIC_SERVER_URL. Uploads must use persistent storage.')
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+const serverURL = payloadServerURL(process.env)
 if (databaseURLs(process.env).runtime && !process.env.PAYLOAD_SECRET)
   throw new Error(
     'PAYLOAD_SECRET is required when connecting the CMS database.',

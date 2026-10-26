@@ -1,4 +1,16 @@
 /** Server/CLI configuration only. Never import this module into client components. */
+/** Keep development admin cookies and CSRF checks on loopback, even with a deployed
+ * public URL in .env. Production must continue to trust only its configured origin.
+ * @param {Record<string, string | undefined>} env
+ */
+export function payloadServerURL(env) {
+  const configured = env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
+  if (env.NODE_ENV === 'development' && !['localhost', '127.0.0.1', '[::1]'].includes(new URL(configured).hostname)) {
+    return `http://127.0.0.1:${env.PORT || '3000'}`
+  }
+  return configured
+}
+
 /** Explicit loopback aliases for local admin POSTs; never trust arbitrary request hosts.
  * @param {string} serverURL
  */

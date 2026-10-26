@@ -14,10 +14,10 @@ const pooled = direct.replace('ep-example.', 'ep-example-pooler.')
 test('Neon exported names use pooled requests and direct migrations; old names still work', () => {
   const env = { DATABASE_URL: direct, DATABASE_URL_POOLED: pooled }
   assert.equal(databaseURLs(env).direct, direct)
-  assert.equal(databaseOptions(env).pool.connectionString, pooled)
+  assert.equal(databaseOptions(env).pool.connectionString, pooled.replace('sslmode=require', 'sslmode=verify-full'))
   const legacy = { DATABASE_URL: pooled, DATABASE_URL_DIRECT: direct }
   assert.equal(databaseURLs(legacy).direct, direct)
-  assert.equal(databaseOptions(legacy).pool.connectionString, pooled)
+  assert.equal(databaseOptions(legacy).pool.connectionString, pooled.replace('sslmode=require', 'sslmode=verify-full'))
 })
 
 test('migration subprocess cannot accidentally select the inherited pooled URL', () => {

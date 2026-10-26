@@ -14,12 +14,12 @@ import { dateLabel } from '@/lib/utils'
 
 export function SectionLabel({ number, children }: { number: string; children: React.ReactNode }) { return <div className="section-label"><span>({number})</span>{children}<ArrowDown size={14} /></div> }
 export function PageHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) { return <div className="page-heading"><div className="eyebrow">{eyebrow}</div><h1>{title}<span className="blue">.</span></h1>{description && <p>{description}</p>}</div> }
-export function MediaImage({ media, priority = false, className = '' }: { media?: Media; priority?: boolean; className?: string }) {
+export function MediaImage({ media, priority = false, className = '', fit = 'cover', sizes = '(max-width: 700px) calc(100vw - 40px), 55vw' }: { media?: Media; priority?: boolean; className?: string; sizes?: string; fit?: 'cover' | 'contain' }) {
   if (!media?.url) return null
   const origin = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
   const src = mediaSource(media.url,origin)
   if (!src) return null
-  return <div className={`media-image ${className}`}><Image src={src} alt={media.alt || ''} fill sizes="(max-width: 700px) 100vw, 55vw" priority={priority} style={{ objectFit: 'cover' }} /></div>
+  return <div className={`media-image ${className}`}><Image src={src} alt={media.alt || ''} fill sizes={sizes} priority={priority} style={{ objectFit: fit }} /></div>
 }
 export function ExternalLink({ href, children, className }: { href?: string; children: React.ReactNode; className?: string }) {
   const url = safeURL(href)

@@ -57,6 +57,18 @@ export const Organizations = content('organizations', [text('title', true), imag
 export const Articles = content('articles', [text('title', true), slug, { name: 'excerpt', type: 'textarea' }, image('coverImage'), rich('content'), rows('tags', [text('name', true)]), { name: 'publishedAt', type: 'date' }, seo])
 export const Skills = content('skills', [text('title', true), { name: 'category', label: 'Category', type: 'text', required: true, maxLength: 45, admin: { description: 'Category tag, e.g. Languages, Frameworks, Tools or AI. Order categories in Website presentation.' } }, image('icon'), { ...image('iconLight'), label: 'Icon for light surfaces', admin: { description: 'Optional alternate. The current dark theme uses Icon or Icon for dark surfaces.' } }, { ...image('iconDark'), label: 'Icon for dark surfaces', admin: { description: 'Optional alternate preferred on the dark site.' } }, url('website'), { name: 'displayOrder', type: 'number', defaultValue: 0 }])
 export const Resume = content('resume', [text('title', true), { name: 'pdf', type: 'upload', relationTo: 'media', required: true, filterOptions: { mimeType: { equals: 'application/pdf' } }, validate: validateMedia('application/pdf') }, { name: 'lastUpdated', type: 'date', required: true }, image('previewImage'), { name: 'visible', type: 'checkbox', defaultValue: true }])
+export const Certificates = content('certificates', [
+  text('title',true),text('eventName',true),
+  {name:'activityType',label:'Event involvement',type:'select',required:true,options:[{label:'Participated',value:'participated'},{label:'Organized',value:'organized'}],admin:{description:'How you contributed to this event.'}},
+  {name:'date',label:'Event or certificate date',type:'date'},
+  text('issuerName'),relation('organization','organizations',false),relation('event','events',false),
+  {name:'description',label:'Short note',type:'textarea',maxLength:180,admin:{description:'Optional context, maximum 180 characters.'}},
+  image('previewImage'),
+  {name:'certificateFile',label:'Certificate image or PDF',type:'upload',relationTo:'media',admin:{description:'Upload the certificate image or PDF in Media, then select it here.'}},
+  url('credentialURL'),
+  {name:'displayOrder',label:'Display order',type:'number',defaultValue:0},
+  {name:'visible',label:'Visible on website',type:'checkbox',defaultValue:true},seo,
+])
 export const Media: CollectionConfig = {
   slug: 'media', admin: { group: 'Assets', useAsTitle: 'alt' },
   access: { read: () => true, create: authenticated, update: authenticated, delete: authenticated },
@@ -77,4 +89,4 @@ export const Media: CollectionConfig = {
     imageSizes: [{ name: 'card', width: 900, height: 675, position: 'centre' }, { name: 'thumbnail', width: 400, height: 300 }], adminThumbnail: 'thumbnail' },
   fields: [text('alt', true), text('caption'), text('attribution'), url('attributionURL')],
 }
-export const collections = [Users, Projects, Events, Hackathons, Experience, Contributions, Organizations, Articles, Skills, Media, Resume]
+export const collections = [Users, Projects, Events, Hackathons, Experience, Contributions, Organizations, Articles, Skills, Media, Resume, Certificates]

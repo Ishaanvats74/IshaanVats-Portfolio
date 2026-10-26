@@ -7,7 +7,7 @@ export const Presentation:GlobalConfig={
  hooks:{afterChange:[({doc})=>{refresh();return doc}]},
  fields:[
  list('sections','Section visibility and order',[
-  {name:'key',label:'Section',type:'select',required:true,options:['hero','chapters','profile','arsenal','work','journey','community','events','process','navigation','contact','projects-page','community-page','about-page','experience-page','activities-page','hackathons-page','events-page','resume-page','writing-page'],admin:{description:'Stable section identifier. Homepage rows also control display order.'}},
+  {name:'key',label:'Section',type:'select',required:true,options:['hero','chapters','profile','arsenal','work','journey','community','events','process','navigation','contact','projects-page','community-page','about-page','experience-page','activities-page','hackathons-page','events-page','resume-page','writing-page','certificates','certificates-page','about-community','about-experience'],admin:{description:'Stable section identifier. Homepage rows also control display order.'}},
   {name:'enabled',label:'Visible',type:'checkbox',defaultValue:true,admin:{description:'Turn off to hide this section without deleting content.'}},
  ]),
  list('originCards','Origin cards',[short('title','Title',35),short('description','Description'),{name:'icon',label:'SVG icon',type:'select',options:['education','code','users'],defaultValue:'code',admin:{description:'Choose a clean SVG icon.'}}]),
