@@ -1,3 +1,15 @@
+# GSAP scrolling and responsive motion � 27 October 2026
+
+Replaced public Motion scroll hooks, continuous section perspective/rotation, nested entry scaling and archive layout animation with a shared GSAP/ScrollTrigger engine. Desktop ScrollSmoother uses a short 0.55-second catch-up; touch, narrow and reduced-motion layouts retain native scrolling. Fixed header/cursor/progress UI lives outside the transformed content. Route and breakpoint cleanup owns all contexts/listeners/observers; same-page anchors, initial deep links and skip-link focus are handled explicitly. A single debounced size observer waits for scrolling to stop before refreshing geometry.
+
+Tech cards are static. Cursor/magnetic interactions use quickTo; project image parallax is limited to eight pixels on desktop. The frame-by-frame React title scramble and duplicate intro/route overlays are removed from rendering. Hero ambient effects pause offscreen, while mobile omits particles, parallax, cursor, fixed grain and backdrop blur. The public site no longer imports Motion; GSAP was already installed, so no dependency installation was needed.
+
+Browser verification caught and fixed a development portrait crash: local Payload media returned an absolute loopback URL while the public URL was configured for Vercel. `mediaSource` now maps local development `/api/media/file/` URLs to relative paths, with production and unrelated remote sources unchanged. A regression test covers this combination and the boundary cases. Also removed inherited double anchor spacing (90px root padding plus 96px target margin).
+
+Verified no horizontal overflow at 320px, 390px, 768px and desktop 1280px. All seven homepage images loaded; mobile navigation opened and closed with Escape. Desktop smooth mode uses one wrapper, header top remains 0px, and the Arsenal deep link settles at approximately 96px. Client navigation to Projects resets scroll to the top and reconciles body/content heights. Production wheel scrolling advances the progress indicator without moving the header. Production browser error/warning log was empty. Temporary viewport overrides were reset. Screenshot: docs/mobile-gsap-preview.png.
+
+TypeScript, lint, all twenty-one tests and `git diff --check` passed. The production webpack build passed (all sixteen generated pages), as did all fifteen public route smoke checks. The production preview temporarily disabled first-user bootstrap only in its own process; no .env values were changed. Development preview was restored afterward. No database/content writes were made for this animation pass. These are functional and layout checks, not a hardware-wide FPS benchmark. See docs/motion-guide.md for tuning and implementation details.
+
 # Verification — 26 October 2026
 
 ## About community, certificates and static tech cards — 26 October 2026

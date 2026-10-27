@@ -9,7 +9,6 @@ import { ArrowDown, ArrowUpRight, Code2, GraduationCap, Users, MapPin } from 'lu
 import { getEntries, getSettings, getPresentation } from '@/lib/data'
 import { AnimeBackground } from '@/components/anime-background'
 import { AnimeTitle } from '@/components/anime-title'
-import { OpeningSequence } from '@/components/opening-sequence'
 import {
   Approach,
   MagneticLink,
@@ -68,7 +67,6 @@ export default async function Home() {
   const groups = [...new Set(skills.map(skill => skill.category || 'Other'))].sort((a,b) => { const rank=(v:string)=>{const i=categoryOrder.indexOf(v);return i<0?categoryOrder.length:i};return rank(a)-rank(b) })
   return (
     <HomeSections>
-      <OpeningSequence name={settings.name} />
       <section id="hero" className="opening-hero" aria-label={copy('app.frontend.page.tsx.prop.1')}>
         <AnimeBackground />
         <div className="hero-topline container">

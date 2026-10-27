@@ -23,6 +23,17 @@ test('same-origin Payload images use relative URLs; remote media retains its ori
  assert.equal(mediaSource('https://cdn.example/icon.png','https://portfolio.example'),'https://cdn.example/icon.png')
  assert.equal(mediaSource('javascript:alert(1)','https://portfolio.example'),undefined)
 })
+
+test('local development CMS media stays on the current site with a deployed public URL',()=>{
+ const origin='https://portfolio.example'
+ for(const host of ['127.0.0.1','localhost','[::1]']) {
+  const url=`http://${host}:3000/api/media/file/portrait.jpg?size=card`
+  assert.equal(mediaSource(url,origin,true),'/api/media/file/portrait.jpg?size=card')
+  assert.equal(mediaSource(url,origin,false),url)
+ }
+ assert.equal(mediaSource('http://127.0.0.1:3000/other/image.png',origin,true),'http://127.0.0.1:3000/other/image.png')
+ assert.equal(mediaSource('https://cdn.example/api/media/file/image.png',origin,true),'https://cdn.example/api/media/file/image.png')
+})
 test('all extracted display references have a seed entry and keys are unique',()=>{
  const keys=new Set(defaultPresentation.copy.map(row=>row.key))
  assert.equal(keys.size,defaultPresentation.copy.length)

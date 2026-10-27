@@ -1,20 +1,22 @@
 'use client'
+import { useEffect, useRef } from 'react'
 import { usePathname } from 'next/navigation'
-import { motion, useScroll } from 'motion/react'
+import { gsap, ScrollTrigger } from '@/lib/gsap'
 import { EnergyCursor } from './energy-cursor'
-
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll()
-  return <motion.div className="scroll-progress" style={{ scaleX: scrollYProgress }} aria-hidden="true" />
-}
 
 export function MotionLayer() {
   const pathname = usePathname()
-  return (
-    <>
-      <ScrollProgress key={`progress:${pathname}`} />
-      <EnergyCursor />
-      <div key={`transition:${pathname}`} className="route-cut" aria-hidden="true"><i /></div>
-    </>
-  )
+  const progress = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const media = gsap.matchMedia()
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      if (!progress.current) return
+      const set = gsap.quickSetter(progress.current, 'scaleX')
+      ScrollTrigger.create({ start: 0, end: () => Math.max(1, ScrollTrigger.maxScroll(window)),
+        onUpdate: self => set(self.progress), onRefresh: self => set(self.progress),
+      })
+    })
+    return () => media.revert()
+  }, [pathname])
+  return <><div ref={progress} className="scroll-progress" aria-hidden="true" /><EnergyCursor /></>
 }

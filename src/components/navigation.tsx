@@ -4,7 +4,6 @@ import { Copy } from '@/components/presentation'
 import { useState } from 'react'
 import { CMSLink as Link } from '@/components/presentation'
 import { usePathname } from 'next/navigation'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import type { Settings } from '@/lib/content'
 
@@ -13,7 +12,6 @@ export function Navigation({ settings }: { settings: Settings }) {
 
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
-  const reduced = useReducedMotion()
   return (
     <header
       className="site-header"
@@ -51,15 +49,11 @@ export function Navigation({ settings }: { settings: Settings }) {
       >
         {open ? <X /> : <Menu />}
       </button>
-      <AnimatePresence>
         {open && (
-          <motion.nav
+          <nav
             id="mobile-navigation"
             className="mobile-nav"
             aria-label={copy('components.navigation.tsx.prop.2')}
-            initial={{ opacity: 0, y: reduced ? 0 : -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
           >
             {[...settings.navigation, { label: copy('components.navigation.tsx.4'), href: '/resume' }].map(
               (item) => (
@@ -73,9 +67,8 @@ export function Navigation({ settings }: { settings: Settings }) {
                 </Link>
               ),
             )}
-          </motion.nav>
+          </nav>
         )}
-      </AnimatePresence>
     </header>
   )
 }

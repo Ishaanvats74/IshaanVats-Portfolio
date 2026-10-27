@@ -94,3 +94,6 @@ Initialize another environment with `pnpm db:migrate` then `pnpm seed` (the equi
 The community content and editable logo live under Site settings → Community on About. Published Experience records now appear on About. `/community` redirects to `/about#community`; navigation uses Projects and Certificates.
 
 Portfolio → Certificates stores participated/organized event certificates, image/PDF uploads, issuer details, dates and optional verification links. Publish records to show them on Home and `/certificates`. Website presentation controls the section visibility and labels. See [the updated dashboard guide](docs/dashboard-guide.md). Apply `npm run db:migrate` then `npm run seed` in another environment; migration `20261026_053300` adds the new fields and collection. No new runtime dependency is required.
+
+
+GSAP scrolling and responsive motion behavior are documented in [docs/motion-guide.md](docs/motion-guide.md). No new dependencies are required; use `npm run dev` for local editing.

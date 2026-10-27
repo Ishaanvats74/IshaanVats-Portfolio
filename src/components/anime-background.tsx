@@ -7,36 +7,17 @@ import { useEffect, useRef } from 'react'
 export function AnimeBackground() {
   const layer = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    const query = window.matchMedia(
-      '(prefers-reduced-motion: no-preference) and (pointer: fine) and (min-width: 900px)',
-    )
-    let frame = 0
-    let offset = 0
-    const update = () => {
-      if (layer.current)
-        layer.current.style.transform = `translate3d(0,${offset}px,0)`
-      frame = 0
-    }
-    const scroll = () => {
-      if (!query.matches) return
-      offset = Math.min(window.scrollY, 900) * 0.12
-      if (!frame) frame = requestAnimationFrame(update)
-    }
-    const reset = () => {
-      if (!query.matches && layer.current) layer.current.style.transform = ''
-      else scroll()
-    }
-    window.addEventListener('scroll', scroll, { passive: true })
-    query.addEventListener('change', reset)
-    return () => {
-      cancelAnimationFrame(frame)
-      window.removeEventListener('scroll', scroll)
-      query.removeEventListener('change', reset)
-    }
+    const node = layer.current
+    if (!node) return
+    const observer = new IntersectionObserver(([entry]) => {
+      node.dataset.active = String(entry.isIntersecting)
+    })
+    observer.observe(node)
+    return () => observer.disconnect()
   }, [])
   return (
-    <div className="anime-world" aria-hidden="true">
-      <div ref={layer} className="world-parallax">
+    <div ref={layer} className="anime-world" aria-hidden="true">
+      <div className="world-parallax">
         <div className="aura-haze" />
         <div className="eclipse">
           <div className="moon-surface" />

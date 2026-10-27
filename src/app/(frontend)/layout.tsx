@@ -7,6 +7,7 @@ import { CMSLink as Link } from '@/components/presentation'
 import { ArrowUpRight } from 'lucide-react'
 import { getSettings, getPresentation, cmsConfigured } from '@/lib/data'
 import { Navigation } from '@/components/navigation'
+import { ScrollStage } from '@/components/scroll-stage'
 import { MotionLayer } from '@/components/motion-layer'
 import { MagneticLink, Reveal } from '@/components/experience'
 import { ExternalLink } from '@/components/content'
@@ -42,11 +43,11 @@ export default async function Layout({
 }) {
   const [settings, presentation] = await Promise.all([getSettings(), getPresentation()])
   return (
-    <html lang="en" data-scroll-behavior="smooth">
+    <html lang="en">
       <body><PresentationProvider value={presentation}>
         <CMSAnchor className="skip-link" href="#main"> <Copy id="app.frontend.layout.tsx.1" /> </CMSAnchor>
         <Visible name="navigation"><Navigation settings={settings} /></Visible>
-        <main id="main">{children}</main>
+        <ScrollStage><main id="main">{children}</main>
         <Visible name="contact"><Reveal>
           <footer id="contact" className="site-footer">
             <div className="footer-transmission">
@@ -95,6 +96,7 @@ export default async function Layout({
             </div>
           </footer>
         </Reveal></Visible>
+        </ScrollStage>
         <MotionLayer />
         {!cmsConfigured && (
           <div className="preview-note"> <Copy id="app.frontend.layout.tsx.9" /> </div>

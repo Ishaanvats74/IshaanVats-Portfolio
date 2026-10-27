@@ -2918,3 +2918,37 @@ em {
 }
 
 .about-chapter .episode-label h2 { font: 12px/1.6 var(--font-mono); text-transform: uppercase; letter-spacing: .08em; margin: 0; color: var(--muted); }
+
+
+/* GSAP scroll stage: fixed UI stays outside the transformed content. */
+html { scroll-behavior: auto; scroll-padding-top: 0; }
+#smooth-wrapper, #smooth-content { min-width: 0; }
+#smooth-content { display: flow-root; }
+html[data-smooth-scroll='true'] .site-header { position: fixed; inset: 0 0 auto; }
+html[data-smooth-scroll='true'] body:has(.site-header) #smooth-content { padding-top: 78px; }
+.site-header { backdrop-filter: none; }
+#main, main :is(section[id], div[id]), #contact { scroll-margin-top: 96px; }
+.scroll-progress { transform: scaleX(0); }
+.magnetic-inner { display: inline-flex; max-width: 100%; }
+.magnetic-wrap .button:hover { transform: none; }
+.project-card { transition: transform .25s ease-out, border-color .2s, box-shadow .2s; }
+.mission-media > .project-parallax { margin: 0; padding: 0; }
+.mission-media .project-image-link { padding-block: 0; }
+.mission-media .media-image { overflow: hidden; }
+.project-card .media-image img { transition: transform .35s ease-out; }
+.anime-world :is(.aura-haze, .orbit-glyphs, .speed-lines i, .embers i) { animation-play-state: paused; }
+.anime-world[data-active='true'] :is(.aura-haze, .orbit-glyphs, .speed-lines i, .embers i) { animation-play-state: running; }
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .project-card:hover { transform: translateY(-3px) scale(1.01); }
+  .project-parallax { padding-block: 10px !important; margin-block: -10px !important; }
+}
+@media (max-width: 899px), (pointer: coarse) {
+  body:after { display: none; }
+  .energy-cursor, .cursor-core, .speed-lines, .embers { display: none; }
+  .aura-haze, .orbit-glyphs, .scroll-prompt svg { animation: none; }
+  .project-card:hover, .button:hover { transform: none; }
+  .project-card .media-image img, .project-card:hover .media-image img { transform: none; }
+  .project-image-link:after { display: none; }
+  .mission-media > .project-parallax { transform: none !important; }
+  .archive-controls, .project-grid > *, .certificate-grid > * { min-width: 0; }
+}

@@ -1,111 +1,116 @@
 'use client'
 
-import { Children, useRef, type ReactNode } from 'react'
+import { Children, useEffect, useRef, type ReactNode } from 'react'
 import { CMSLink as Link } from '@/components/presentation'
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react'
+import { gsap } from '@/lib/gsap'
 import { usePresentation, resolveLink, useCopy } from './presentation'
 
 export function Approach() {
-  const reduced = useReducedMotion()
   const element = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({target:element,offset:['start end','end center']})
   const steps = usePresentation().processSteps
-  return (
-    <div ref={element} className="approach-journey">
-      <div className="approach-track" aria-hidden="true">
-        <motion.div style={{scaleX:reduced?1:scrollYProgress}} />
-      </div>
-      <ol>
-        {steps.map(({title, description}, index) => (
-          <motion.li key={title} initial={false}
-            whileInView={reduced ? undefined : { opacity: [0, 1], y: [16, 0] }} viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, delay: Math.min(index,5) * 0.09 }}>
-            <span className="approach-number">0{index + 1}</span>
-            <h3>{title}</h3>
-            <p>{description}</p>
-          </motion.li>
-        ))}
-      </ol>
-    </div>
-  )
+  useEffect(() => {
+    const media = gsap.matchMedia()
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      const bar = element.current?.querySelector('.approach-track > div')
+      if (bar) gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: {
+        trigger: element.current, start: 'top 80%', end: 'bottom 55%', scrub: true,
+      } })
+    })
+    return () => media.revert()
+  }, [])
+  return <div ref={element} className="approach-journey">
+    <div className="approach-track" aria-hidden="true"><div /></div>
+    <ol>{steps.map(({title, description}, index) => <li key={title}>
+      <span className="approach-number">0{index + 1}</span><h3>{title}</h3><p>{description}</p>
+    </li>)}</ol>
+  </div>
 }
 
-/** Keep server content visible; animate only the owned presentation wrapper. */
+/** A short entry, never an always-scrubbing 3D transform on an entire section. */
 export function Reveal({ children, className = '', delay = 0 }: {
-  children: ReactNode
-  className?: string
-  delay?: number
+  children: ReactNode; className?: string; delay?: number
 }) {
   const element = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-  const { scrollYProgress } = useScroll({ target: element, offset: ['start end', 'end start'] })
-  const rotateX = useTransform(scrollYProgress, [0, 0.3, 1], [3, 0, 0])
-  return <motion.div ref={element} className={className}
-    initial={false}
-    style={{ rotateX: reduced ? 0 : rotateX, transformPerspective: 1200, transformOrigin: '50% 100%' }}
-    whileInView={reduced ? { opacity: [0.6, 1] } : { opacity: [0, 1], y: [28, 0], scale: [0.985, 1] }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.65, delay: Math.min(delay, 0.5), ease: [0.22, 1, 0.36, 1] }}>
-    {children}
-  </motion.div>
+  useEffect(() => {
+    const node = element.current
+    // Nested entry transforms were multiplying motion and rasterizing huge layers.
+    if (!node || node.parentElement?.closest('[data-reveal]')) return
+    const media = gsap.matchMedia()
+    media.add({ animate: '(prefers-reduced-motion: no-preference)', desktop: '(min-width: 900px)' }, context => {
+      if (!context.conditions?.animate || node.getBoundingClientRect().top < innerHeight * 0.94) return
+      const desktop = context.conditions.desktop
+      gsap.fromTo(node, { autoAlpha: 0, y: desktop ? 20 : 10 }, {
+        autoAlpha: 1, y: 0, duration: desktop ? 0.5 : 0.32,
+        delay: Math.min(delay, desktop ? 0.24 : 0.08), ease: 'power2.out',
+        clearProps: 'transform,opacity,visibility',
+        scrollTrigger: { trigger: node, start: 'top 94%', once: true },
+      })
+    })
+    return () => media.revert()
+  }, [delay])
+  return <div ref={element} className={className} data-reveal>{children}</div>
 }
 
-export function MagneticLink({
-  href, children, className = '', external = false, ariaLabel,
-}: {
-  href: string
-  children: ReactNode
-  className?: string
-  external?: boolean
-  ariaLabel?: string
+export function MagneticLink({ href, children, className = '', external = false, ariaLabel }: {
+  href: string; children: ReactNode; className?: string; external?: boolean; ariaLabel?: string
 }) {
-  const reduced = useReducedMotion()
+  const wrapper = useRef<HTMLSpanElement>(null)
+  const inner = useRef<HTMLSpanElement>(null)
   const copy = useCopy()
-  const x = useSpring(0, { stiffness: 240, damping: 22 })
-  const y = useSpring(0, { stiffness: 240, damping: 22 })
-  const reset = () => { x.set(0); y.set(0) }
-  if (!resolveLink(href,copy)) return null
-  return (
-    <span className="magnetic-wrap" onPointerMove={event => {
-      if (reduced || event.pointerType !== 'mouse') return
-      const bounds = event.currentTarget.getBoundingClientRect()
-      x.set(Math.max(-8, Math.min(8, (event.clientX - bounds.left - bounds.width / 2) * 0.12)))
-      y.set(Math.max(-6, Math.min(6, (event.clientY - bounds.top - bounds.height / 2) * 0.15)))
-    }} onPointerLeave={reset} onBlur={reset}>
-      <motion.span style={{ x: reduced ? 0 : x, y: reduced ? 0 : y, display: 'inline-flex' }}>
-        <Link href={resolveLink(href, copy)} className={className} aria-label={ariaLabel}
-          target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>
-          {children}
-        </Link>
-      </motion.span>
-    </span>
-  )
+  useEffect(() => {
+    const media = gsap.matchMedia()
+    media.add('(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+      if (!wrapper.current || !inner.current) return
+      const node = wrapper.current
+      const x = gsap.quickTo(inner.current, 'x', { duration: 0.22, ease: 'power2.out' })
+      const y = gsap.quickTo(inner.current, 'y', { duration: 0.22, ease: 'power2.out' })
+      let bounds: DOMRect | undefined
+      const enter = () => { bounds = node.getBoundingClientRect() }
+      const move = (event: PointerEvent) => {
+        if (event.pointerType !== 'mouse' || !bounds) return
+        x(gsap.utils.clamp(-6, 6, (event.clientX - bounds.left - bounds.width / 2) * 0.1))
+        y(gsap.utils.clamp(-4, 4, (event.clientY - bounds.top - bounds.height / 2) * 0.1))
+      }
+      const reset = () => { bounds = undefined; x(0); y(0) }
+      node.addEventListener('pointerenter', enter)
+      node.addEventListener('pointermove', move)
+      node.addEventListener('pointerleave', reset)
+      node.addEventListener('focusout', reset)
+      return () => {
+        node.removeEventListener('pointerenter', enter)
+        node.removeEventListener('pointermove', move)
+        node.removeEventListener('pointerleave', reset)
+        node.removeEventListener('focusout', reset)
+      }
+    })
+    return () => media.revert()
+  }, [])
+  const destination = resolveLink(href,copy)
+  if (!destination) return null
+  return <span ref={wrapper} className="magnetic-wrap"><span ref={inner} className="magnetic-inner">
+    <Link href={destination} className={className} aria-label={ariaLabel}
+      target={external ? '_blank' : undefined} rel={external ? 'noopener noreferrer' : undefined}>{children}</Link>
+  </span></span>
 }
 
 export function ProjectSurface({ media, children }: { media: ReactNode; children: ReactNode }) {
-  const reduced = useReducedMotion()
   const card = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: card, offset: ['start end', 'end start'] })
-  const scrollY = useTransform(scrollYProgress, [0, 1], [14, -14])
-  const x = useSpring(0, { stiffness: 180, damping: 25 })
-  const y = useSpring(0, { stiffness: 180, damping: 25 })
-  const reset = () => { x.set(0); y.set(0) }
-  return <motion.article ref={card} className="project-card" data-cursor="VIEW PROJECT"
-    whileHover={reduced ? undefined : { scale: 1.02 }}
-    transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-    onPointerMove={event => {
-      if (reduced || event.pointerType !== 'mouse') return
-      const bounds = event.currentTarget.getBoundingClientRect()
-      x.set((event.clientX - bounds.left - bounds.width / 2) * 0.018)
-      y.set((event.clientY - bounds.top - bounds.height / 2) * 0.018)
-    }} onPointerLeave={reset}>
-    <div className="mission-media"><motion.div style={{ x: reduced ? 0 : x, y: reduced ? 0 : y }}>
-      <motion.div style={{ y: reduced ? 0 : scrollY }}>{media}</motion.div>
-    </motion.div></div>
-    {children}
-  </motion.article>
+  const image = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const match = gsap.matchMedia()
+    match.add('(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+      if (!card.current || !image.current) return
+      gsap.fromTo(image.current, { y: -8 }, { y: 8, ease: 'none', scrollTrigger: {
+        trigger: card.current, start: 'top bottom', end: 'bottom top', scrub: 0.25,
+      } })
+    })
+    return () => match.revert()
+  }, [])
+  return <article ref={card} className="project-card" data-cursor="VIEW PROJECT">
+    <div className="mission-media"><div ref={image} className="project-parallax">{media}</div></div>{children}
+  </article>
 }
 
 export function RevealGroup({children,className=''}:{children:ReactNode;className?:string}) {
- return <div className={className}>{Children.toArray(children).map((child,index)=><Reveal key={index} delay={Math.min(index,5)*.09}>{child}</Reveal>)}</div>
+  return <div className={className}>{Children.toArray(children).map((child,index)=><Reveal key={index} delay={Math.min(index,3)*0.06}>{child}</Reveal>)}</div>
 }
